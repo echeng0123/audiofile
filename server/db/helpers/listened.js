@@ -14,12 +14,21 @@ const createListened = async ({
 		const {
 			rows: [album],
 		} = await client.query(
-			`INSERT INTO to_listen(users_id,artist, album_name, image_url,release_date, review, rating, date_listened
+			`INSERT INTO listened(users_id, artist, album_name, image_url,release_date, review, rating, date_listened
             )
-            VALUES ($1,$2,$3,$4,$5)
+            VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
             RETURNING *;
             `,
-			[users_id, artist, album_name, image_url, release_date]
+			[
+				users_id,
+				artist,
+				album_name,
+				image_url,
+				release_date,
+				review,
+				rating,
+				date_listened,
+			]
 		);
 		return album;
 	} catch (error) {

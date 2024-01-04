@@ -49,8 +49,8 @@ const createTables = async () => {
             image_url TEXT,
             release_date INTEGER,
             review TEXT,
-            rating INTEGER,
-            date_listened TEXT
+            rating FLOAT(25),
+            date_listened INTEGER
         );
         `
 	);
@@ -61,7 +61,6 @@ const createTables = async () => {
 const createInitialUsers = async () => {
 	try {
 		console.log("...starting to create initial users");
-		console.log("users", users);
 		for (const user of users) {
 			await createUser(user);
 		}
@@ -77,7 +76,7 @@ const createInitialToListen = async () => {
 	try {
 		console.log("...starting to create initial to listen list");
 		for (const album of to_listen) {
-			await createInitialToListen(album);
+			await createToListen(album);
 		}
 		console.log("initial to listen list created");
 		console.log("to listen list: ", to_listen);
@@ -91,7 +90,7 @@ const createInitialListened = async () => {
 	try {
 		console.log("...starting to create initial listened list");
 		for (const album of listened) {
-			await createInitialListened(album);
+			await createListened(album);
 		}
 		console.log("initial listened list created");
 		console.log("listened list: ", listened);
