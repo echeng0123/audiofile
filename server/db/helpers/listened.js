@@ -1,17 +1,20 @@
 const client = require("../client");
 
-const createToListen = async ({
+const createListened = async ({
 	users_id,
 	artist,
 	album_name,
 	image_url,
 	release_date,
+	review,
+	rating,
+	date_listened,
 }) => {
 	try {
 		const {
 			rows: [album],
 		} = await client.query(
-			`INSERT INTO to_listen(users_id,artist, album_name, image_url,release_date
+			`INSERT INTO to_listen(users_id,artist, album_name, image_url,release_date, review, rating, date_listened
             )
             VALUES ($1,$2,$3,$4,$5)
             RETURNING *;
@@ -24,7 +27,7 @@ const createToListen = async ({
 	}
 };
 
-const getAllToListen = async () => {
+const getAllListened = async () => {
 	try {
 		console.log("entering get all to listen list");
 		const { rows } = await client.query(
@@ -40,7 +43,7 @@ const getAllToListen = async () => {
 	}
 };
 
-const getToListenById = async (to_listen_id) => {
+const getListenedById = async (to_listen_id) => {
 	try {
 		console.log("entering to listen by id");
 		const {
@@ -55,7 +58,7 @@ const getToListenById = async (to_listen_id) => {
 	}
 };
 
-const getToListenByUserId = async (userId) => {
+const getListenedByUserId = async (userId) => {
 	try {
 		console.log("entering get to listen list by user id");
 		const { rows } = await client.query(`
@@ -69,8 +72,8 @@ const getToListenByUserId = async (userId) => {
 };
 
 module.exports = {
-	createToListen,
-	getAllToListen,
-	getToListenById,
-	getToListenByUserId,
+	createListened,
+	getAllListened,
+	getListenedById,
+	getListenedByUserId,
 };

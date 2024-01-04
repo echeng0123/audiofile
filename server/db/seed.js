@@ -4,6 +4,9 @@ const client = require("./client");
 
 const { createUser } = require("./helpers/users");
 const { createToListen } = require("./helpers/toListen");
+const { createListened } = require("./helpers/listened");
+
+const { users, to_listen, listened } = require("./seedData");
 
 // Drop tables
 const dropTables = async () => {
@@ -33,20 +36,20 @@ const createTables = async () => {
         CREATE TABLE to_listen (
             to_listen_id SERIAL PRIMARY KEY,
             users_id INTEGER REFERENCES users(users_id),
-            artist TEXT
-            album_name TEXT
-            image_url TEXT
+            artist TEXT,
+            album_name TEXT,
+            image_url TEXT,
             release_date INTEGER
         );
         CREATE TABLE listened (
-            listened_id SERIAL PRIMARY KEY
+            listened_id SERIAL PRIMARY KEY,
             users_id INTEGER REFERENCES users(users_id),
-            artist TEXT
-            album_name TEXT
-            image_url TEXT
-            release_date INTEGER
-            review TEXT
-            rating INTEGER
+            artist TEXT,
+            album_name TEXT,
+            image_url TEXT,
+            release_date INTEGER,
+            review TEXT,
+            rating INTEGER,
             date_listened TEXT
         );
         `
@@ -73,12 +76,52 @@ const createInitialUsers = async () => {
 const createInitialToListen = async () => {
 	try {
 		console.log("...starting to create initial to listen list");
-		for (const album of toListen) {
+		for (const album of to_listen) {
 			await createInitialToListen(album);
 		}
 		console.log("initial to listen list created");
-		console.log("to listen list: ", toListen);
+		console.log("to listen list: ", to_listen);
 	} catch (error) {
 		throw error;
 	}
 };
+
+// Create initial Listened
+const createInitialListened = async () => {
+	try {
+		console.log("...starting to create initial listened list");
+		for (const album of listened) {
+			await createInitialListened(album);
+		}
+		console.log("initial listened list created");
+		console.log("listened list: ", listened);
+	} catch (error) {
+		throw error;
+	}
+};
+
+// Call all functions and build database
+const rebuildDb = async () => {
+	try {
+		// connect to local database
+		console.log("entering rebuildDB function");
+		client.connect();
+
+		// run functions
+		await dropTables();
+		await createTables();
+
+		// Generating starting data
+		console.log("starting to seed data...");
+		await createInitialUsers();
+		await createInitialToListen();
+		await createInitialListened();
+	} catch (error) {
+		console.error("Can't build DB", error);
+	} finally {
+		// close connection
+		client.end();
+	}
+};
+
+rebuildDb();
