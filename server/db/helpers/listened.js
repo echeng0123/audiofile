@@ -42,7 +42,7 @@ const getAllListened = async () => {
 		const { rows } = await client.query(
 			`
             SELECT *
-            FROM to_listen;
+            FROM listened;
             `
 		);
 		console.log("to listen list in get all", rows);
@@ -52,16 +52,16 @@ const getAllListened = async () => {
 	}
 };
 
-const getListenedById = async (to_listen_id) => {
+const getListenedById = async (listened_id) => {
 	try {
 		console.log("entering to listen by id");
 		const {
-			rows: [to_listen],
+			rows: [listened],
 		} = await client.query(`
-        SELECT * FROM to_listen
-        WHERE to_listen_id = ${to_listen_id}`);
-		console.log("to listen in get to listen by id", to_listen);
-		return to_listen;
+        SELECT * FROM listened
+        WHERE listened_id = ${listened_id}`);
+		console.log("listened id in get listened by id", listened);
+		return listened;
 	} catch (error) {
 		throw error;
 	}
@@ -71,7 +71,7 @@ const getListenedByUserId = async (userId) => {
 	try {
 		console.log("entering get to listen list by user id");
 		const { rows } = await client.query(`
-        SELECT * FROM to_listen
+        SELECT * FROM listened
         WHERE users_id = ${userId}`);
 		console.log("to listen list in get to listen by user Id", rows);
 		return rows;

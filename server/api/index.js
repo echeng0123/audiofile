@@ -15,6 +15,6 @@ router.use("/users", require("./users"));
 router.use("/to_listen", require("./toListen"));
 
 // ROUTER: /api/listened
-// router.use("/listened", require("./listened"));
+router.use("/listened", require("./listened"));
 
 module.exports = router;
