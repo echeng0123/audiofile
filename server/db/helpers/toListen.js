@@ -68,9 +68,22 @@ const getToListenByUserId = async (userId) => {
 	}
 };
 
+const deleteToListen = async (to_listen_id) => {
+	try {
+		console.log("entering db helper deleteToListen");
+		const { rows } = await client.query(`
+       DELETE FROM to_listen WHERE to_listen_id=${to_listen_id}
+       RETURNING *;
+       `);
+	} catch (error) {
+		throw error;
+	}
+};
+
 module.exports = {
 	createToListen,
 	getAllToListen,
 	getToListenById,
 	getToListenByUserId,
+	deleteToListen,
 };
