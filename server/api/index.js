@@ -12,7 +12,7 @@ router.get("/health", (req, res, next) => {
 router.use("/users", require("./users"));
 
 // ROUTER: /api/to_listen
-// router.use("/to_listen", require("./to_listen"));
+router.use("/to_listen", require("./toListen"));
 
 // ROUTER: /api/listened
 // router.use("/listened", require("./listened"));
