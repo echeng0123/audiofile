@@ -80,9 +80,22 @@ const getListenedByUserId = async (userId) => {
 	}
 };
 
+const deleteListened = async (listened_id) => {
+	try {
+		console.log("entering db helper delete listened");
+		const { rows } = await client.query(`
+       DELETE FROM listened WHERE listened_id=${listened_id}
+       RETURNING *;
+       `);
+	} catch (error) {
+		throw error;
+	}
+};
+
 module.exports = {
 	createListened,
 	getAllListened,
 	getListenedById,
 	getListenedByUserId,
+	deleteListened,
 };
