@@ -1,4 +1,4 @@
-// this file links the API requests for the drinks table
+// this file links the API requests for the to listen table
 
 const express = require("express");
 const router = express.Router();
