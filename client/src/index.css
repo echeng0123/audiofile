@@ -79,3 +79,15 @@ button:focus-visible {
     margin: 1rem;
     padding: 5rem;
 }
+
+#home-container{
+    border: 1px solid cyan;
+    margin: 1rem;
+    padding: 2rem;
+}
+
+#navbar-container{
+    border: 1px solid rgb(11, 255, 11);
+    margin: 1rem;
+    padding: 1rem;
+}
