@@ -75,7 +75,7 @@ button:focus-visible {
 }
 
 #main-section-container{
-    border: 1px dotted goldenrod;
+    border: 2px dotted goldenrod;
     margin: 1rem;
     padding: 5rem;
 }
@@ -90,4 +90,39 @@ button:focus-visible {
     border: 1px solid rgb(11, 255, 11);
     margin: 1rem;
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
 }
+
+#to-listen-container{
+    border: 1px solid pink;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#listened-container{
+    border: 1px solid greenyellow;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+
+/* NAVBAR START -------------------------- */
+
+.dropdown-content{
+    border: 1px dashed red;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#app-title{
+    margin: 0 10rem 0 1rem;
+}
+
+.nav-link{
+    margin: 0 1rem;
+}
+
+/* NAVBAR END ---------------------------- */
