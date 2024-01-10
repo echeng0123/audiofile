@@ -158,3 +158,37 @@ button:focus-visible {
 }
 
 /* SEARCH BAR END ------------------------ */
+
+/* ALBUM CARD START ---------------------- */
+#album-card-container{
+    display: flex;
+    border: 2px dotted cyan;
+}
+
+#album-info-review{
+    display: inline-block;
+    border: 2px dotted orange;
+}
+#album-info-art{
+    display: flex;
+}
+#album-info{
+    display: inline-block;
+    text-align: left;
+    padding: 0 1rem;
+    border: 2px dotted greenyellow;
+}
+#album-review{
+    text-align: left;
+    border: 2px dotted purple;
+}
+#album-icons{
+    border: 2px dashed pink;
+    flex-grow: 1;
+    display: grid;
+}
+
+.album-button{
+    margin: 0 1rem;
+}
+/* ALBUM CARD END ------------------------ */
