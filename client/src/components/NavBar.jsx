@@ -1,6 +1,6 @@
 import Search from "./Search";
 
-export default function NavBar() {
+export default function NavBar({ spotifyToken, setSpotifyToken }) {
 	return (
 		<section id="navbar-container">
 			<a href="">

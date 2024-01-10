@@ -21,3 +21,26 @@ export const fetchToken = async () => {
 };
 
 fetchToken();
+
+// grabs album object from spotify search endpoint
+export const fetchAlbumSearch = async (albumInput, spotifyToken) => {
+	console.log("spotifyToken in fetch album search", spotifyToken);
+	try {
+		console.log("...starting to fetch album");
+		const response = await fetch(`${base_url}${albumInput}&type=album`, {
+			method: "GET",
+			headers: {
+				// "Content-Type": "application/json",
+				Authorization: `Bearer ${spotifyToken}`,
+			},
+		});
+		const result = await response.json();
+		console.log("result", result);
+		// console.log("result.albums.items", result.albums.items);
+		// const genreArray = result.albums.items[0].genres;
+		// console.log("genreArray", genreArray);
+		// return genreArray;
+	} catch (error) {
+		console.error("Cannot fetch albumSearch", error);
+	}
+};

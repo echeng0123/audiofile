@@ -140,6 +140,6 @@ button:focus-visible {
     border: 1px solid greenyellow;
     padding: 1rem;
     margin: 1rem;
-    display: flex;
+    display: grid;
 }
 /* SEARCH BAR END ------------------------ */
