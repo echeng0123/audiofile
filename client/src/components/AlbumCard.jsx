@@ -6,11 +6,15 @@ export default function AlbumCard({ albums }) {
 		<section id="album-card-container">
 			<div id="album-info-review">
 				<div id="album-info">
-					<img src="" alt="album art" />
+					<img src={albums.images[1].url} alt="album art" />
 					<div>
-						<p>Album name</p>
-						<p>Year released</p>
-						<p>By Artist name</p>
+						<h2>{albums.name}</h2>
+						<p>
+							Released <b>{albums.release_date.slice(0, 4)}</b>
+						</p>
+						<p>
+							By <b>{albums.artists[0].name}</b>
+						</p>
 					</div>
 				</div>
 				<div id="album-review">

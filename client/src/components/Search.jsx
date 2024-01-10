@@ -149,7 +149,7 @@ export default function Search() {
 					)}
 				</div>
 			)}
-			{isAlbum && num && <AlbumCard albums={albums[num]} />}
+			{isAlbum && num != null && <AlbumCard albums={albums[num]} />}
 		</section>
 	);
 }
