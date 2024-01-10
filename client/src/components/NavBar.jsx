@@ -1,3 +1,5 @@
+import Search from "./Search";
+
 export default function NavBar() {
 	return (
 		<section id="navbar-container">
@@ -15,6 +17,7 @@ export default function NavBar() {
 				<a href="/listened" className="nav-link">
 					listened
 				</a>
+				<Search />
 			</div>
 		</section>
 	);
