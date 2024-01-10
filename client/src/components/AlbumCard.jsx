@@ -2,6 +2,10 @@ export default function AlbumCard({ albums }) {
 	console.log("we are in albumcard");
 	console.log("albums in albumcard", albums);
 
+	function handleListen() {
+		// code to add to listen
+	}
+
 	return (
 		<section id="album-card-container">
 			<div id="album-info-review">

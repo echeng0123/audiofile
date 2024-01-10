@@ -112,40 +112,48 @@ export default function Search() {
 						</button>
 					)}
 					{albums && (
-						<div className="search-result">
-							<img src={albums[1].images[2].url} alt="" />
-							<div className="search-result-details">
-								<p>{albums[1].name}</p>
-								<p>Album by {albums[1].artists[0].name}</p>
+						<button onClick={() => handleClick(1)}>
+							<div className="search-result">
+								<img src={albums[1].images[2].url} alt="" />
+								<div className="search-result-details">
+									<p>{albums[1].name}</p>
+									<p>Album by {albums[1].artists[0].name}</p>
+								</div>
 							</div>
-						</div>
+						</button>
 					)}
 					{albums && (
-						<div className="search-result">
-							<img src={albums[2].images[2].url} alt="" />
-							<div className="search-result-details">
-								<p>{albums[2].name}</p>
-								<p>Album by {albums[2].artists[0].name}</p>
+						<button onClick={() => handleClick(2)}>
+							<div className="search-result">
+								<img src={albums[2].images[2].url} alt="" />
+								<div className="search-result-details">
+									<p>{albums[2].name}</p>
+									<p>Album by {albums[2].artists[0].name}</p>
+								</div>
 							</div>
-						</div>
+						</button>
 					)}
 					{albums && (
-						<div className="search-result">
-							<img src={albums[3].images[2].url} alt="" />
-							<div className="search-result-details">
-								<p>{albums[3].name}</p>
-								<p>Album by {albums[3].artists[0].name}</p>
+						<button onClick={() => handleClick(3)}>
+							<div className="search-result">
+								<img src={albums[3].images[2].url} alt="" />
+								<div className="search-result-details">
+									<p>{albums[3].name}</p>
+									<p>Album by {albums[3].artists[0].name}</p>
+								</div>
 							</div>
-						</div>
+						</button>
 					)}
 					{albums && (
-						<div className="search-result">
-							<img src={albums[4].images[2].url} alt="" />
-							<div className="search-result-details">
-								<p>{albums[4].name}</p>
-								<p>Album by {albums[4].artists[0].name}</p>
+						<button onClick={() => handleClick(4)}>
+							<div className="search-result">
+								<img src={albums[4].images[2].url} alt="" />
+								<div className="search-result-details">
+									<p>{albums[4].name}</p>
+									<p>Album by {albums[4].artists[0].name}</p>
+								</div>
 							</div>
-						</div>
+						</button>
 					)}
 				</div>
 			)}
