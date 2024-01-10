@@ -148,8 +148,13 @@ button:focus-visible {
 }
 
 .search-result{
-    border: 1px dotted red;
+    border: 2px dotted red;
     display: flex;
+}
+
+.search-result-details{
+    display: inline-block;
+    text-align: left;
 }
 
 /* SEARCH BAR END ------------------------ */

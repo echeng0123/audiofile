@@ -104,19 +104,46 @@ export default function Search() {
 					{albums && (
 						<div className="search-result">
 							<img src={albums[0].images[2].url} alt="" />
-							<p>{albums[0].name}</p>
+							<div className="search-result-details">
+								<p>{albums[0].name}</p>
+								<p>Album by {albums[0].artists[0].name}</p>
+							</div>
 						</div>
 					)}
 					{albums && (
 						<div className="search-result">
 							<img src={albums[1].images[2].url} alt="" />
-							<p>{albums[1].name}</p>
+							<div className="search-result-details">
+								<p>{albums[1].name}</p>
+								<p>Album by {albums[1].artists[0].name}</p>
+							</div>
 						</div>
 					)}
 					{albums && (
 						<div className="search-result">
 							<img src={albums[2].images[2].url} alt="" />
-							<p>{albums[2].name}</p>
+							<div className="search-result-details">
+								<p>{albums[2].name}</p>
+								<p>Album by {albums[2].artists[0].name}</p>
+							</div>
+						</div>
+					)}
+					{albums && (
+						<div className="search-result">
+							<img src={albums[3].images[2].url} alt="" />
+							<div className="search-result-details">
+								<p>{albums[3].name}</p>
+								<p>Album by {albums[3].artists[0].name}</p>
+							</div>
+						</div>
+					)}
+					{albums && (
+						<div className="search-result">
+							<img src={albums[4].images[2].url} alt="" />
+							<div className="search-result-details">
+								<p>{albums[4].name}</p>
+								<p>Album by {albums[4].artists[0].name}</p>
+							</div>
 						</div>
 					)}
 				</div>
