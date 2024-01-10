@@ -1,4 +1,7 @@
-export default function AlbumCard() {
+export default function AlbumCard({ albums }) {
+	console.log("we are in albumcard");
+	console.log("albums in albumcard", albums);
+
 	return (
 		<section id="album-card-container">
 			<div id="album-info-review">

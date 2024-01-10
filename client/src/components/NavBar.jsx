@@ -17,7 +17,9 @@ export default function NavBar({ spotifyToken, setSpotifyToken }) {
 				<a href="/listened" className="nav-link">
 					listened
 				</a>
-				<Search />
+				<a href="/search" className="nav-link">
+					search
+				</a>
 			</div>
 		</section>
 	);

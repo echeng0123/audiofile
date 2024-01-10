@@ -1,18 +1,18 @@
 import search from "../assets/search.png";
 import { fetchAlbumSearch, fetchToken } from "../../fetching/spotify.js";
 import { useEffect, useState } from "react";
+import AlbumCard from "./AlbumCard.jsx";
+// import { useNavigate } from "react-router-dom";
 
 export default function Search() {
 	const [albums, setAlbums] = useState({});
-	// const [album6, setAlbum6] = useState({});
-	// const [album7, setAlbum7] = useState({});
-	// const [album8, setAlbum8] = useState({});
-	// const [album9, setAlbum9] = useState({});
-	// const [album10, setAlbum10] = useState({});
-
 	const [albumInput, setAlbumInput] = useState("");
 	const [results, setResults] = useState(false);
 	const [spotifyToken, setSpotifyToken] = useState("");
+	const [isAlbum, setIsAlbum] = useState(false);
+	const [num, setNum] = useState(null);
+
+	// const navigate = useNavigate();
 
 	// get token
 	useEffect(() => {
@@ -59,17 +59,6 @@ export default function Search() {
 						albumsTemp.push(albumResponse.albums.items[i]);
 					}
 				}
-
-				// setAlbum1(albumResponse.albums.items[0]);
-				// setAlbum2(albumResponse.albums.items[1]);
-				// setAlbum3(albumResponse.albums.items[2]);
-				// setAlbum4(albumResponse.albums.items[3]);
-				// setAlbum5(albumResponse.albums.items[4]);
-				// setAlbum6(albumResponse.albums.items[5]);
-				// setAlbum7(albumResponse.albums.items[6]);
-				// setAlbum8(albumResponse.albums.items[7]);
-				// setAlbum9(albumResponse.albums.items[8]);
-				// setAlbum10(albumResponse.albums.items[9]);
 				setAlbums(albumsTemp.slice(0, 5));
 				console.log("albums from search are ", albumsTemp.slice(0, 5));
 			} else {
@@ -79,9 +68,19 @@ export default function Search() {
 		getAlbumSearch();
 	}, [albumInput]);
 
+	// routes to single album page when search result is clicked
+	async function handleClick(n) {
+		event.preventDefault();
+		console.log("i'm in handleclick");
+		console.log("n is", n);
+		setNum(n);
+		setIsAlbum(!isAlbum);
+	}
+
 	return (
 		<section id="search-bar-container">
 			{/* <img src={search} alt="magnifying glass" id="search-icon" /> */}
+			<h3>Search for albums</h3>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="Search"></label>
 				<input
@@ -102,13 +101,15 @@ export default function Search() {
 				<div id="search-dropdown">
 					<p>search result here</p>
 					{albums && (
-						<div className="search-result">
-							<img src={albums[0].images[2].url} alt="" />
-							<div className="search-result-details">
-								<p>{albums[0].name}</p>
-								<p>Album by {albums[0].artists[0].name}</p>
+						<button onClick={() => handleClick(0)}>
+							<div className="search-result">
+								<img src={albums[0].images[2].url} alt="" />
+								<div className="search-result-details">
+									<p>{albums[0].name}</p>
+									<p>Album by {albums[0].artists[0].name}</p>
+								</div>
 							</div>
-						</div>
+						</button>
 					)}
 					{albums && (
 						<div className="search-result">
@@ -148,6 +149,7 @@ export default function Search() {
 					)}
 				</div>
 			)}
+			{isAlbum && num && <AlbumCard albums={albums[num]} />}
 		</section>
 	);
 }
