@@ -142,4 +142,14 @@ button:focus-visible {
     margin: 1rem;
     display: grid;
 }
+
+#search-dropdown{
+    display: grid;
+}
+
+.search-result{
+    border: 1px dotted red;
+    display: flex;
+}
+
 /* SEARCH BAR END ------------------------ */

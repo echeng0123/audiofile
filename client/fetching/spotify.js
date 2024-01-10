@@ -35,7 +35,8 @@ export const fetchAlbumSearch = async (albumInput, spotifyToken) => {
 			},
 		});
 		const result = await response.json();
-		console.log("result", result);
+		console.log("result from fetch album search", result);
+		return result;
 		// console.log("result.albums.items", result.albums.items);
 		// const genreArray = result.albums.items[0].genres;
 		// console.log("genreArray", genreArray);
