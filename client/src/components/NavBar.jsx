@@ -3,7 +3,7 @@ import Search from "./Search";
 export default function NavBar({ spotifyToken, setSpotifyToken }) {
 	return (
 		<section id="navbar-container">
-			<a href="">
+			<a href="/">
 				<h1 id="app-title">audiofile</h1>
 			</a>
 			<div className="dropdown-content">
