@@ -35,6 +35,17 @@ router.get("/:to_listen_id", async (req, res, next) => {
 	}
 });
 
+// GET - /api/to_listen/user/:user_id - get to_listen by USER id
+router.get("/user/:user_id", async (req, res, next) => {
+	try {
+		console.log("entering api/to_listen/user/:user_id router");
+		const to_listen = await getToListenByUserId(req.params.user_id);
+		res.send(to_listen);
+	} catch (error) {
+		next(error);
+	}
+});
+
 // POST - /api/to_listen - create a new to_listen
 router.post("/", async (req, res, next) => {
 	try {

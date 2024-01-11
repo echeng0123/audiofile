@@ -16,11 +16,17 @@ export default function MainSection({
 	userId,
 	setUserId,
 }) {
+	console.log("main section userId", userId);
+	console.log("main section token", token);
+
 	return (
 		<section id="main-section-container">
 			<Routes>
 				<Route path="/" element={<Home />}></Route>
-				<Route path="/to-listen" element={<ToListen />}></Route>
+				<Route
+					path="/to-listen"
+					element={<ToListen token={token} userId={userId} />}
+				></Route>
 				<Route path="/listened" element={<Listened />}></Route>
 				<Route path="/search" element={<Search />}></Route>
 				<Route path="/card" element={<AlbumCard />}></Route>

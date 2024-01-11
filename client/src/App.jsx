@@ -9,17 +9,16 @@ function App() {
 	const [token, setToken] = useState(null);
 	const [userId, setUserId] = useState(null);
 
+	useEffect(() => {
+		setToken(window.localStorage.getItem("token"));
+		setUserId(window.localStorage.getItem("userId"));
+		setSpotifyToken(window.localStorage.getItem("spotifyToken"));
+	}, []);
+
 	return (
 		<section id="app-container">
 			<h1>APP</h1>
-			<NavBar
-				spotifyToken={spotifyToken}
-				setSpotifyToken={setSpotifyToken}
-				token={token}
-				setToken={setToken}
-				userId={userId}
-				setUserId={setUserId}
-			/>
+			<NavBar token={token} />
 			<MainSection
 				spotifyToken={spotifyToken}
 				setSpotifyToken={setSpotifyToken}
