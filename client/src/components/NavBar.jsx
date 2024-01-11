@@ -1,6 +1,11 @@
 import Search from "./Search";
 
-export default function NavBar({ spotifyToken, setSpotifyToken }) {
+export default function NavBar({
+	spotifyToken,
+	setSpotifyToken,
+	token,
+	setToken,
+}) {
 	return (
 		<section id="navbar-container">
 			<a href="/">
@@ -20,6 +25,16 @@ export default function NavBar({ spotifyToken, setSpotifyToken }) {
 				<a href="/search" className="nav-link">
 					search
 				</a>
+				{!token && (
+					<a href="/login" className="nav-link">
+						login
+					</a>
+				)}
+				{token && (
+					<a href="/logout" className="nav-link">
+						logout
+					</a>
+				)}
 			</div>
 		</section>
 	);

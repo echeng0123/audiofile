@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 function App() {
 	//get tokens where other components can use them
 	const [spotifyToken, setSpotifyToken] = useState(null);
+	const [token, setToken] = useState(null);
+	const [userId, setUserId] = useState(null);
 
 	return (
 		<section id="app-container">
@@ -13,8 +15,18 @@ function App() {
 			<NavBar
 				spotifyToken={spotifyToken}
 				setSpotifyToken={setSpotifyToken}
+				token={token}
+				setToken={setToken}
+				userId={userId}
+				setUserId={setUserId}
 			/>
-			<MainSection />
+			<MainSection
+				spotifyToken={spotifyToken}
+				setSpotifyToken={setSpotifyToken}
+				token={token}
+				setToken={setToken}
+				setUserId={setUserId}
+			/>
 		</section>
 	);
 }
