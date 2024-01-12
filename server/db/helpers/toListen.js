@@ -11,8 +11,7 @@ const createToListen = async ({
 		const {
 			rows: [album],
 		} = await client.query(
-			`INSERT INTO to_listen(users_id, artist, album_name, image_url,release_date
-            )
+			`INSERT INTO to_listen(users_id, artist, album_name, image_url,release_date)
             VALUES ($1,$2,$3,$4,$5)
             RETURNING *;
             `,

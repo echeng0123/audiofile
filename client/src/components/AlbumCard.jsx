@@ -12,13 +12,16 @@ export default function AlbumCard({ userId, albums }) {
 		let image_url = albums.images[1].url;
 		let release_date = albums.release_date;
 
-		console.log("info here", {
-			users_id,
-			artist,
-			album_name,
-			image_url,
-			release_date,
-		});
+		console.log(
+			"info here",
+			JSON.stringify({
+				users_id,
+				artist,
+				album_name,
+				image_url,
+				release_date,
+			})
+		);
 		try {
 			await createNewToListen(
 				users_id,

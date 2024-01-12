@@ -102,6 +102,14 @@ export const createNewToListen = async (
 ) => {
 	try {
 		console.log("...starting to create new to listen");
+		// console.log(
+		// 	"info in localjs createNewToListen",
+		// 	users_id,
+		// 	artist,
+		// 	album_name,
+		// 	image_url,
+		// 	release_date
+		// );
 		const response = await fetch(`${base_url}/to_listen`, {
 			method: "POST",
 			headers: {
