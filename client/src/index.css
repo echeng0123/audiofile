@@ -192,3 +192,16 @@ button:focus-visible {
     margin: 0 1rem;
 }
 /* ALBUM CARD END ------------------------ */
+
+
+/* TO LISTEN START ----------------------- */
+#to-listen-gallery{
+    border: 1px solid cyan;
+    padding: 1rem;
+    display: flex;
+}
+
+ #album-card-to-listen{
+    border: 2px dotted goldenrod;
+ }
+/* TO LISTEN END ------------------------- */

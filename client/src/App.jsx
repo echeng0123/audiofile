@@ -11,14 +11,14 @@ function App() {
 
 	useEffect(() => {
 		setToken(window.localStorage.getItem("token"));
-		setUserId(Number(window.localStorage.getItem("userId")));
+		setUserId(window.localStorage.getItem("userId"));
 		setSpotifyToken(window.localStorage.getItem("spotifyToken"));
 	}, []);
 
 	return (
 		<section id="app-container">
 			<h1>APP</h1>
-			<NavBar token={token} />
+			<NavBar token={token} userId={userId} />
 			<MainSection
 				spotifyToken={spotifyToken}
 				setSpotifyToken={setSpotifyToken}

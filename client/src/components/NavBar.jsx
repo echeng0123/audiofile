@@ -1,34 +1,32 @@
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
-export default function NavBar({ token }) {
+export default function NavBar({ token, userId }) {
 	return (
 		<section id="navbar-container">
-			<a href="/">
+			<Link to="/" className="nav-link">
 				<h1 id="app-title">audiofile</h1>
-			</a>
+			</Link>
 			<div className="dropdown-content">
-				<a href="/" className="nav-link">
-					home
-				</a>
-				{/* <a href="/profile">profile</a> */}
-				<a href="/to-listen" className="nav-link">
+				<Link to="/">home</Link>
+				<Link to="/to-listen" className="nav-link">
 					to listen
-				</a>
-				<a href="/listened" className="nav-link">
+				</Link>
+				<Link to="listened" className="nav-link">
 					listened
-				</a>
-				<a href="/search" className="nav-link">
-					search
-				</a>
-				{!token && (
-					<a href="/login" className="nav-link">
+				</Link>
+				{/* <a href="/profile">profile</a> */}
+				<Link to="/search">search</Link>
+				{token ? (
+					<>
+						<Link to="/logout" className="nav-link">
+							logout
+						</Link>
+					</>
+				) : (
+					<Link to="/login" className="nav-link">
 						login
-					</a>
-				)}
-				{token && (
-					<a href="/logout" className="nav-link">
-						logout
-					</a>
+					</Link>
 				)}
 			</div>
 		</section>
