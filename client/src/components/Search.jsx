@@ -55,7 +55,11 @@ export default function Search({ userId }) {
 			console.log("albumResponse is ", albumResponse);
 			if (albumResponse) {
 				for (let i = 0; i < albumResponse.albums.items.length; i++) {
-					if (albumResponse.albums.items[i].album_type === "album") {
+					if (
+						albumResponse.albums.items[i].album_type === "album" ||
+						albumResponse.albums.items[i].album_type ===
+							"compilation"
+					) {
 						albumsTemp.push(albumResponse.albums.items[i]);
 					}
 				}

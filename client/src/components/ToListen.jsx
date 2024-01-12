@@ -3,8 +3,8 @@ import { fetchToListenByUserId } from "../../fetching/local";
 import { useNavigate } from "react-router-dom";
 
 export default function ToListen({ token, userId }) {
-	const [toListen, setToListen] = useState({});
-	const [toListenList, setToListenList] = useState({});
+	const [toListen, setToListen] = useState([]);
+	const [toListenList, setToListenList] = useState([]);
 
 	useEffect(() => {
 		console.log("userId in ToListen", userId);
@@ -34,17 +34,17 @@ export default function ToListen({ token, userId }) {
 		getToListenByUserId();
 	}, [userId]);
 
-	// useEffect(() => {
-	// 	console.log("toListen in UE", toListen);
-	// 	setToListenList(toListen);
-	// }, [toListen]);
+	useEffect(() => {
+		console.log("toListen in UE", toListen);
+		setToListenList(toListen);
+	}, [toListen]);
 
 	return (
 		<section id="to-listen-container">
 			<h1>TO LISTEN LIST HERE</h1>
-			{toListen ? (
+			{toListenList ? (
 				<div id="to-listen-gallery">
-					{toListen.map((album) => {
+					{toListenList.map((album) => {
 						return (
 							<div
 								id="album-card-to-listen"
