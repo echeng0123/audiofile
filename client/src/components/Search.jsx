@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import AlbumCard from "./AlbumCard.jsx";
 // import { useNavigate } from "react-router-dom";
 
-export default function Search() {
+export default function Search({ userId }) {
 	const [albums, setAlbums] = useState({});
 	const [albumInput, setAlbumInput] = useState("");
 	const [results, setResults] = useState(false);
@@ -157,7 +157,9 @@ export default function Search() {
 					)}
 				</div>
 			)}
-			{isAlbum && num != null && <AlbumCard albums={albums[num]} />}
+			{isAlbum && num != null && (
+				<AlbumCard userId={userId} albums={albums[num]} />
+			)}
 		</section>
 	);
 }

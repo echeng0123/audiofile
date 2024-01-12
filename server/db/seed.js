@@ -39,7 +39,7 @@ const createTables = async () => {
             artist TEXT,
             album_name TEXT,
             image_url TEXT,
-            release_date INTEGER
+            release_date TEXT
         );
         CREATE TABLE listened (
             listened_id SERIAL PRIMARY KEY,
@@ -47,7 +47,7 @@ const createTables = async () => {
             artist TEXT,
             album_name TEXT,
             image_url TEXT,
-            release_date INTEGER,
+            release_date TEXT,
             review TEXT,
             rating FLOAT(25),
             date_listened INTEGER

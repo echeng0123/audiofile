@@ -92,3 +92,33 @@ export const fetchToListenByUserId = async (user_id) => {
 		console.error(error);
 	}
 };
+
+export const createNewToListen = async (
+	users_id,
+	artist,
+	album_name,
+	image_url,
+	release_date
+) => {
+	try {
+		console.log("...starting to create new to listen");
+		const response = await fetch(`${base_url}/to_listen`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				users_id: users_id,
+				artist: artist,
+				album_name: album_name,
+				image_url: image_url,
+				release_date: release_date,
+			}),
+		});
+		const result = await response.json();
+		console.log("result from createNewToListen", result);
+		return result;
+	} catch (error) {
+		console.error("Cannot post new to listen", error);
+	}
+};

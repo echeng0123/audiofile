@@ -28,7 +28,10 @@ export default function MainSection({
 					element={<ToListen token={token} userId={userId} />}
 				></Route>
 				<Route path="/listened" element={<Listened />}></Route>
-				<Route path="/search" element={<Search />}></Route>
+				<Route
+					path="/search"
+					element={<Search userId={userId} />}
+				></Route>
 				<Route path="/card" element={<AlbumCard />}></Route>
 				<Route
 					path="/login"

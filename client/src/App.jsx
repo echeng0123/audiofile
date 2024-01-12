@@ -11,7 +11,7 @@ function App() {
 
 	useEffect(() => {
 		setToken(window.localStorage.getItem("token"));
-		setUserId(window.localStorage.getItem("userId"));
+		setUserId(Number(window.localStorage.getItem("userId")));
 		setSpotifyToken(window.localStorage.getItem("spotifyToken"));
 	}, []);
 
@@ -24,6 +24,7 @@ function App() {
 				setSpotifyToken={setSpotifyToken}
 				token={token}
 				setToken={setToken}
+				userId={userId}
 				setUserId={setUserId}
 			/>
 		</section>
