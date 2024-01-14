@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchToListenByUserId } from "../../fetching/local";
 import { useNavigate } from "react-router-dom";
+import DeleteToListen from "./DeleteToListen";
 
 export default function ToListen({ token, userId }) {
 	const [toListen, setToListen] = useState([]);
@@ -57,6 +58,9 @@ export default function ToListen({ token, userId }) {
 								/>
 								<h3>{album.artist}</h3>
 								<p>{album.album_name}</p>
+								<DeleteToListen
+									to_listen_id={album.to_listen_id}
+								/>
 							</div>
 						);
 					})}

@@ -130,3 +130,17 @@ export const createNewToListen = async (
 		console.error("Cannot post new to listen", error);
 	}
 };
+
+export const deleteToListen = async (to_listen_id) => {
+	try {
+		console.log("...removing to listen item from list");
+		const response = await fetch(`${base_url}/to_listen/${to_listen_id}`, {
+			method: "DELETE",
+		});
+		const result = await response.json();
+		console.log("removed to listen item");
+		return result;
+	} catch (error) {
+		console.log(error);
+	}
+};
