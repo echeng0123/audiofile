@@ -203,3 +203,17 @@ export const createNewListened = async (
 		console.error("Cannot post new listened", error);
 	}
 };
+
+export const deleteListened = async (listened_id) => {
+	try {
+		console.log("...removing listened item from list");
+		const response = await fetch(`${base_url}/listened/${listened_id}`, {
+			method: "DELETE",
+		});
+		const result = await response.json();
+		console.log("removed listened item");
+		return result;
+	} catch (error) {
+		console.log(error);
+	}
+};
