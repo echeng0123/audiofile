@@ -42,6 +42,9 @@ export default function AlbumCard({ userId, albums }) {
 		let album_name = albums.name;
 		let image_url = albums.images[1].url;
 		let release_date = albums.release_date;
+		let review = "";
+		let rating = 5;
+		let date_listened = 2023;
 
 		console.log(
 			"info here",
