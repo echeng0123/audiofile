@@ -27,7 +27,10 @@ export default function MainSection({
 					path="/to-listen"
 					element={<ToListen token={token} userId={userId} />}
 				></Route>
-				<Route path="/listened" element={<Listened />}></Route>
+				<Route
+					path="/listened"
+					element={<Listened token={token} userId={userId} />}
+				></Route>
 				<Route
 					path="/search"
 					element={<Search userId={userId} />}

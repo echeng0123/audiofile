@@ -1,4 +1,4 @@
-import { createNewToListen } from "../../fetching/local";
+import { createNewToListen, createNewListened } from "../../fetching/local";
 
 export default function AlbumCard({ userId, albums }) {
 	console.log("we are in albumcard");
@@ -35,6 +35,43 @@ export default function AlbumCard({ userId, albums }) {
 		}
 	}
 
+	async function handleListened(event) {
+		event.preventDefault();
+		let users_id = userId;
+		let artist = albums.artists[0].name;
+		let album_name = albums.name;
+		let image_url = albums.images[1].url;
+		let release_date = albums.release_date;
+
+		console.log(
+			"info here",
+			JSON.stringify({
+				users_id,
+				artist,
+				album_name,
+				image_url,
+				release_date,
+				review,
+				rating,
+				date_listened,
+			})
+		);
+		try {
+			await createNewListened(
+				users_id,
+				artist,
+				album_name,
+				image_url,
+				release_date,
+				review,
+				rating,
+				date_listened
+			);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
 	return (
 		<section id="album-card-container">
 			<div id="album-info-review">
@@ -54,7 +91,12 @@ export default function AlbumCard({ userId, albums }) {
 					</div>
 					<div id="album-icons">
 						<div>
-							<button className="album-button">listen</button>
+							<button
+								className="album-button"
+								onClick={handleListened}
+							>
+								listen
+							</button>
 							<button className="album-button">favorite</button>
 							<button
 								className="album-button"

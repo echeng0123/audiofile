@@ -144,3 +144,62 @@ export const deleteToListen = async (to_listen_id) => {
 		console.log(error);
 	}
 };
+
+// LISTENED ROUTES =========================== //
+export const fetchAllListened = async () => {
+	try {
+		const response = await fetch(`${base_url}/listened`);
+		const result = await response.json();
+		console.log("result from fetchAllListened", result);
+		return result;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+export const fetchListenedByUserId = async (user_id) => {
+	try {
+		const response = await fetch(`${base_url}/listened/user/${user_id}`);
+		const result = await response.json();
+		console.log("result from fetchListenedByUserId", result);
+		return result;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+export const createNewListened = async (
+	users_id,
+	artist,
+	album_name,
+	image_url,
+	release_date,
+	review,
+	rating,
+	date_listened
+) => {
+	try {
+		console.log("...starting to create new listened item");
+		const response = await fetch(`${base_url}/listened`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				users_id: users_id,
+				artist: artist,
+				album_name: album_name,
+				image_url: image_url,
+				release_date: release_date,
+				review: review,
+				rating: rating,
+				date_listened: date_listened,
+			}),
+		});
+		const result = await response.json();
+		console.log("result from createNewListened", result);
+		return result;
+	} catch (error) {
+		console.error("Cannot post new listened", error);
+	}
+};

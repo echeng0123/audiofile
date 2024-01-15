@@ -42,7 +42,7 @@ export default function ToListen({ token, userId }) {
 
 	return (
 		<section id="to-listen-container">
-			<h1>TO LISTEN LIST HERE</h1>
+			<h1>TO LISTEN LIST</h1>
 			{toListenList ? (
 				<div id="to-listen-gallery">
 					{toListenList.map((album) => {
