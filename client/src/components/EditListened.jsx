@@ -50,7 +50,7 @@ export default function EditListened({ listened_id }) {
 
 	return (
 		<section>
-			<button>Add review</button>
+			<button onClick={handleClick}>Add review</button>
 			{isOpen && (
 				<div>
 					<h1>Add review</h1>
@@ -65,6 +65,9 @@ export default function EditListened({ listened_id }) {
 								})
 							}
 						></textarea>
+						<button type="submit" className="clear-button">
+							Submit
+						</button>
 					</form>
 				</div>
 			)}

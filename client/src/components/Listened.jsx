@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchListenedByUserId } from "../../fetching/local";
 import { useNavigate } from "react-router-dom";
 import DeleteListened from "./DeleteListened";
+import EditListened from "./EditListened";
 
 export default function Listened({ token, userId }) {
 	const [listened, setListened] = useState([]);
@@ -56,11 +57,13 @@ export default function Listened({ token, userId }) {
 									alt="album art"
 									className="to-listen"
 								/>
+								<h2>{album.album_name}</h2>
 								<h3>{album.artist}</h3>
-								<p>{album.album_name}</p>
+								<p>{album.review}</p>
 								<DeleteListened
 									listened_id={album.listened_id}
 								/>
+								<EditListened listened_id={album.listened_id} />
 							</div>
 						);
 					})}

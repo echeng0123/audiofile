@@ -229,7 +229,7 @@ export const deleteListened = async (listened_id) => {
 	}
 };
 
-export const updateListened = async (listenedData, listenedId) => {
+export const editListened = async (listenedData, listenedId) => {
 	try {
 		console.log("entering edit listened in local");
 		const response = await fetch(`${base_url}/listened/${listenedId}`, {
