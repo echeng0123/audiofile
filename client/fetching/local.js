@@ -228,3 +228,23 @@ export const deleteListened = async (listened_id) => {
 		console.log(error);
 	}
 };
+
+export const updateListened = async (listenedData, listenedId) => {
+	try {
+		console.log("entering edit listened in local");
+		const response = await fetch(`${base_url}/listened/${listenedId}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(listenedData),
+		});
+		const result = await response.json();
+		console.log("Successfully edited listened");
+		return result;
+	} catch (error) {
+		alert(
+			"We're sorry, there has been an error during edit. Please try again later."
+		);
+	}
+};
