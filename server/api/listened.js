@@ -9,6 +9,7 @@ const {
 	getListenedById,
 	getListenedByUserId,
 	deleteListened,
+	updateListened,
 } = require("../db/helpers/listened");
 
 // GET - /api/listened - get all on the "to listen" list
@@ -61,8 +62,19 @@ router.post("/", async (req, res, next) => {
 
 router.delete("/:listened_id", async (req, res, next) => {
 	try {
-		console.log("entering delete to listen item router");
+		console.log("entering delete listened item router");
 		const listened = await deleteListened(req.params.listened_id);
+		res.send(listened);
+	} catch (error) {
+		next(error);
+	}
+});
+
+// PUT - /api/listened/:listened_id
+router.put("/:listened_id", async (req, res, next) => {
+	try {
+		console.log("entering put in listened router");
+		const listened = await updateListened(req.params.listened_id, req.body);
 		res.send(listened);
 	} catch (error) {
 		next(error);

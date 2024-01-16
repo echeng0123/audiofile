@@ -92,10 +92,40 @@ const deleteListened = async (listened_id) => {
 	}
 };
 
+// user will only ever be updating review, rating, or date listened and none of the other parameters will change
+const updateListened = async (listened_id, body) => {
+	try {
+		console.log("entering update listened in db helper");
+		const {
+			rows: [listened],
+		} = await client.query(
+			`
+            UPDATE listened
+            SET artist = $1, album_name = $2, image_url = $3, release_date = $4, review = $5, rating = $6, date_listened = $7
+            WHERE listened_id = ${listened_id}
+            RETURNING *;
+            `,
+			[
+				body.artist,
+				body.album_name,
+				body.image_url,
+				body.release_date,
+				body.review,
+				body.rating,
+				body.date_listened,
+			]
+		);
+		return listened;
+	} catch (error) {
+		throw error;
+	}
+};
+
 module.exports = {
 	createListened,
 	getAllListened,
 	getListenedById,
 	getListenedByUserId,
 	deleteListened,
+	updateListened,
 };

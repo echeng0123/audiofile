@@ -157,6 +157,17 @@ export const fetchAllListened = async () => {
 	}
 };
 
+export const fetchListenedById = async (listened_id) => {
+	try {
+		const response = await fetch(`${base_url}/listened/${listened_id}`);
+		const result = await response.json();
+		console.log("result from fetchListenedById", result);
+		return result;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
 export const fetchListenedByUserId = async (user_id) => {
 	try {
 		const response = await fetch(`${base_url}/listened/user/${user_id}`);
