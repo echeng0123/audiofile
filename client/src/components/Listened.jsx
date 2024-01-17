@@ -3,6 +3,7 @@ import { fetchListenedByUserId } from "../../fetching/local";
 import { useNavigate } from "react-router-dom";
 import DeleteListened from "./DeleteListened";
 import EditListened from "./EditListened";
+import Rating from "@mui/material/Rating";
 
 export default function Listened({ token, userId }) {
 	const [listened, setListened] = useState([]);
@@ -59,12 +60,19 @@ export default function Listened({ token, userId }) {
 								/>
 								<h2>{album.album_name}</h2>
 								<h3>{album.artist}</h3>
-								{"⭐".repeat(album.rating)}
+								<Rating
+									name="half-rating-read"
+									defaultValue={album.rating}
+									precision={0.5}
+									readOnly
+								/>
+								{/* {"⭐".repeat(album.rating)} */}
 								<p>{album.review}</p>
+								<EditListened listened_id={album.listened_id} />
+								<br />
 								<DeleteListened
 									listened_id={album.listened_id}
 								/>
-								<EditListened listened_id={album.listened_id} />
 							</div>
 						);
 					})}

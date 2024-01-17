@@ -60,25 +60,28 @@ export default function EditListened({ listened_id }) {
 
 	return (
 		<section>
-			<div id="rating">
-				<Stack spacing={1}>
-					<Rating
-						name="half-rating"
-						defaultValue={0}
-						precision={0.5}
-						value={value}
-						onChange={(event, newValue) => {
-							handleRating(event, newValue);
-						}}
-					/>
-				</Stack>
-			</div>
 			<div>
-				<button onClick={handleClick}>Add review</button>
+				<button onClick={handleClick}>
+					{isOpen ? "Close review panel" : "Add review"}
+				</button>
 				{isOpen && (
 					<div>
-						<h1>Add review</h1>
+						<h3>Add review</h3>
 						<form onSubmit={handleEdit}>
+							<div id="rating">
+								<Stack spacing={1}>
+									<Rating
+										name="half-rating"
+										defaultValue={0}
+										precision={0.5}
+										value={value}
+										onChange={(event, newValue) => {
+											handleRating(event, newValue);
+										}}
+									/>
+								</Stack>
+							</div>
+							<br />
 							<textarea
 								autoFocus
 								value={listened.review ? listened.review : ""}
@@ -89,6 +92,8 @@ export default function EditListened({ listened_id }) {
 									})
 								}
 							></textarea>
+							<br />
+							<br />
 							<button type="submit" className="clear-button">
 								Submit
 							</button>
