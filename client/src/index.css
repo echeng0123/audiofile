@@ -206,3 +206,12 @@ button:focus-visible {
     border: 2px dotted goldenrod;
  }
 /* TO LISTEN END ------------------------- */
+
+/* LISTENED START------------------------- */
+#rating{
+    display: flex;
+    justify-content: center;
+}
+
+
+/* LISTENED END -------------------------- */

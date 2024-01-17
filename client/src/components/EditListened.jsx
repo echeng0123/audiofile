@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchListenedById, editListened } from "../../fetching/local";
+import Rating from "@mui/material/Rating";
+import Stack from "@mui/material/Stack";
 
 export default function EditListened({ listened_id }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [listened, setListened] = useState({});
+	const [value, setValue] = useState(null);
+	const [rating, setRating] = useState(null);
 
 	const navigate = useNavigate();
 
@@ -36,7 +40,7 @@ export default function EditListened({ listened_id }) {
 			image_url: listened.image_url,
 			release_date: listened.release_date,
 			review: listened.review,
-			rating: listened.rating,
+			rating: value,
 			date_listened: listened.date_listened,
 		};
 
@@ -48,29 +52,51 @@ export default function EditListened({ listened_id }) {
 		}
 	}
 
+	async function handleRating(event, newValue) {
+		event.preventDefault();
+		console.log("value is currently", newValue);
+		setValue(newValue);
+		// setRating(value);
+	}
+
 	return (
 		<section>
-			<button onClick={handleClick}>Add review</button>
-			{isOpen && (
-				<div>
-					<h1>Add review</h1>
-					<form onSubmit={handleEdit}>
-						<textarea
-							autoFocus
-							value={listened.review ? listened.review : ""}
-							onChange={(e) =>
-								setListened({
-									...listened,
-									review: e.target.value,
-								})
-							}
-						></textarea>
-						<button type="submit" className="clear-button">
-							Submit
-						</button>
-					</form>
-				</div>
-			)}
+			<div id="rating">
+				<Stack spacing={1}>
+					<Rating
+						name="half-rating"
+						defaultValue={0}
+						precision={0.5}
+						value={value}
+						onChange={(event, newValue) => {
+							handleRating(event, newValue);
+						}}
+					/>
+				</Stack>
+			</div>
+			<div>
+				<button onClick={handleClick}>Add review</button>
+				{isOpen && (
+					<div>
+						<h1>Add review</h1>
+						<form onSubmit={handleEdit}>
+							<textarea
+								autoFocus
+								value={listened.review ? listened.review : ""}
+								onChange={(e) =>
+									setListened({
+										...listened,
+										review: e.target.value,
+									})
+								}
+							></textarea>
+							<button type="submit" className="clear-button">
+								Submit
+							</button>
+						</form>
+					</div>
+				)}
+			</div>
 		</section>
 	);
 }
