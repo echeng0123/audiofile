@@ -22,7 +22,7 @@ export default function EditListened({ listened_id }) {
 		async function getListenedById() {
 			try {
 				const response = await fetchListenedById(listenedId);
-				console.log("fetched listened data: ", response);
+				// console.log("fetched listened data: ", response);
 				setListened(response);
 			} catch (error) {
 				console.error("'problem fetching listened item", error);
@@ -54,7 +54,7 @@ export default function EditListened({ listened_id }) {
 
 	async function handleRating(event, newValue) {
 		event.preventDefault();
-		console.log("value is currently", newValue);
+		// console.log("value is currently", newValue);
 		setValue(newValue);
 	}
 

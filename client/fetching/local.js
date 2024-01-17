@@ -14,6 +14,18 @@ export const fetchAllUsers = async () => {
 	}
 };
 
+// get single user info
+export const fetchUserByUserId = async (user_id) => {
+	try {
+		const response = await fetch(`${base_url}/users/${user_id}`);
+		const result = await response.json();
+		console.log("result from fetch single user ", result);
+		return result;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
 // REGISTER
 export const register = async (userObj) => {
 	try {

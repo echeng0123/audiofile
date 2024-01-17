@@ -9,10 +9,10 @@ export default function Listened({ token, userId }) {
 	const [listened, setListened] = useState([]);
 	const [listenedList, setListenedList] = useState([]);
 
-	useEffect(() => {
-		console.log("userId in listened", userId);
-		console.log("token in listened", token);
-	}, []);
+	// useEffect(() => {
+	// 	console.log("userId in listened", userId);
+	// 	console.log("token in listened", token);
+	// }, []);
 
 	const navigate = useNavigate();
 

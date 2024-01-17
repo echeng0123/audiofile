@@ -22,7 +22,10 @@ export default function MainSection({
 	return (
 		<section id="main-section-container">
 			<Routes>
-				<Route path="/" element={<Home />}></Route>
+				<Route
+					path="/"
+					element={<Home token={token} userId={userId} />}
+				></Route>
 				<Route
 					path="/to-listen"
 					element={<ToListen token={token} userId={userId} />}
