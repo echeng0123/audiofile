@@ -59,6 +59,7 @@ export default function Listened({ token, userId }) {
 								/>
 								<h2>{album.album_name}</h2>
 								<h3>{album.artist}</h3>
+								{"⭐".repeat(album.rating)}
 								<p>{album.review}</p>
 								<DeleteListened
 									listened_id={album.listened_id}

@@ -56,7 +56,6 @@ export default function EditListened({ listened_id }) {
 		event.preventDefault();
 		console.log("value is currently", newValue);
 		setValue(newValue);
-		// setRating(value);
 	}
 
 	return (
