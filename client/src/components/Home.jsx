@@ -27,10 +27,17 @@ export default function Home({ token, userId }) {
 
 	return (
 		<section id="home-container">
-			{userId && (
+			{userId ? (
 				<div>
 					<h1>Welcome, {titleCase(username)}</h1>
 					<p>Your user id is {userIdNo}.</p>
+				</div>
+			) : (
+				<div>
+					<h1>Log in to add items to lists. </h1>
+					<a href="/login">Log in to account</a>
+					<br />
+					<a href="/register">Create new account</a>
 				</div>
 			)}
 		</section>
