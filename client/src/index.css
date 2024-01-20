@@ -253,4 +253,14 @@ button:focus-visible {
 
 /* PROFILE START ------------------------- */
 
+#profile-gallery{
+    border: 2px solid rgb(11, 255, 11);
+    display: flex;
+    justify-content: center;
+}
+
+.profile-album-art{
+    width: 20dvw;
+}
+
 /* PROFILE END --------------------------- */
