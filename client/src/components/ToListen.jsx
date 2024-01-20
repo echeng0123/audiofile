@@ -54,10 +54,10 @@ export default function ToListen({ token, userId }) {
 								<img
 									src={album.image_url}
 									alt="album art"
-									className="to-listen-"
+									className="album-art"
 								/>
-								<h3>{album.artist}</h3>
-								<p>{album.album_name}</p>
+								<h3 className="album-info">{album.artist}</h3>
+								<p className="album-info">{album.album_name}</p>
 								<DeleteToListen
 									to_listen_id={album.to_listen_id}
 								/>
