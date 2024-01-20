@@ -1,5 +1,6 @@
 import { fetchUserByUserId } from "../../fetching/local";
 import { useState, useEffect } from "react";
+import Listened from "./Listened";
 
 export default function Profile({ token, userId }) {
 	const [username, setUsername] = useState("");
@@ -25,6 +26,7 @@ export default function Profile({ token, userId }) {
 					<h2>{username}</h2>
 				</div>
 			)}
+			<Listened token={token} userId={userId} />
 		</section>
 	);
 }
