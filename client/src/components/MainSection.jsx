@@ -7,6 +7,7 @@ import Search from "./Search";
 import Login from "./Login";
 import Logout from "./Logout";
 import Register from "./Register";
+import Profile from "./Profile";
 
 export default function MainSection({
 	spotifyToken,
@@ -55,6 +56,10 @@ export default function MainSection({
 					element={<Logout token={token} setToken={setToken} />}
 				/>
 				<Route path="/register" element={<Register />}></Route>
+				<Route
+					path="/profile"
+					element={<Profile token={token} userId={userId} />}
+				></Route>
 			</Routes>
 		</section>
 	);

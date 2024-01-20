@@ -15,7 +15,9 @@ export default function NavBar({ token, userId }) {
 				<Link to="listened" className="nav-link">
 					listened
 				</Link>
-				{/* <a href="/profile">profile</a> */}
+				<Link to="profile" className="nav-link">
+					profile
+				</Link>
 				<Link to="/search">search</Link>
 				{token ? (
 					<>
