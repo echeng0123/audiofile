@@ -53,26 +53,41 @@ export default function Listened({ token, userId }) {
 								id="album-card-to-listen"
 								key={album.listened_id}
 							>
-								<img
-									src={album.image_url}
-									alt="album art"
-									className="to-listen"
-								/>
-								<h2>{album.album_name}</h2>
-								<h3>{album.artist}</h3>
-								<Rating
-									name="half-rating-read"
-									defaultValue={album.rating}
-									precision={0.5}
-									readOnly
-								/>
-								{/* {"⭐".repeat(album.rating)} */}
-								<p>{album.review}</p>
-								<EditListened listened_id={album.listened_id} />
-								<br />
-								<DeleteListened
-									listened_id={album.listened_id}
-								/>
+								<div className="album-art-name">
+									<img
+										src={album.image_url}
+										alt="album art"
+										className="album-art"
+									/>
+									<div className="listened-album-info">
+										<h2>
+											<b>{album.album_name} </b>
+											{album.release_date.slice(0, 4)}
+											<br />
+										</h2>
+										<p>
+											<b>by {album.artist}.</b> added to
+											list on {album.date_listened}
+										</p>
+										<Rating
+											name="half-rating-read"
+											defaultValue={album.rating}
+											precision={0.5}
+											readOnly
+										/>
+										<p>{album.review}</p>
+									</div>
+								</div>
+								<div></div>
+								<div className="listened-buttons-container">
+									<EditListened
+										listened_id={album.listened_id}
+									/>
+									<br />
+									<DeleteListened
+										listened_id={album.listened_id}
+									/>
+								</div>
 							</div>
 						);
 					})}

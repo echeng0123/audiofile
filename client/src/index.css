@@ -208,6 +208,7 @@ button:focus-visible {
     flex-grow: 1;
     justify-content: space-between;
     align-items: center;
+    margin: 0.3rem 0;
  }
 
 .album-art{
@@ -225,6 +226,28 @@ button:focus-visible {
     justify-content: center;
 }
 
+.listened-album-info{
+    display: inline-block;
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.album-art-name{
+    display: flex;
+    margin-right: 1rem;
+}
+
+.listened-buttons-container{
+    border: 1px dashed white;
+}
+
+.review-button{
+    border: 1px dashed white;
+}
+
+.delete-button{
+    border: 1px dashed white;
+}
 
 /* LISTENED END -------------------------- */
 

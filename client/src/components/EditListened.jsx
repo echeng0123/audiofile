@@ -61,7 +61,7 @@ export default function EditListened({ listened_id }) {
 	return (
 		<section>
 			<div>
-				<button onClick={handleClick}>
+				<button onClick={handleClick} className="review-button">
 					{isOpen ? "Close review panel" : "Add review"}
 				</button>
 				{isOpen && (
