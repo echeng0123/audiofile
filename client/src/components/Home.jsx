@@ -1,7 +1,8 @@
 import { fetchUserByUserId } from "../../fetching/local";
 import { useEffect, useState } from "react";
+import Login from "./Login";
 
-export default function Home({ token, userId }) {
+export default function Home({ token, setToken, setUserId, userId }) {
 	console.log("userId in Home", userId);
 	const [username, setUsername] = useState("");
 	const [userIdNo, setUserIdNo] = useState(null);
@@ -35,9 +36,11 @@ export default function Home({ token, userId }) {
 			) : (
 				<div>
 					<h1>Log in to add items to lists. </h1>
-					<a href="/login">Log in to account</a>
-					<br />
-					<a href="/register">Create new account</a>
+					<Login
+						token={token}
+						setToken={setToken}
+						setUserId={setUserId}
+					/>
 				</div>
 			)}
 		</section>
