@@ -99,7 +99,7 @@ export default function Profile({ token, userId }) {
 				) : (
 					<></>
 				)}
-				<h4 style={{ textAlign: "left" }}>RECENT ACTIVITY</h4>
+				<h4 style={{ textAlign: "left" }}>RECENT ACTIVITY:</h4>
 				{listenedList ? (
 					<div id="to-listen-gallery">
 						{listenedList.map((album) => {
