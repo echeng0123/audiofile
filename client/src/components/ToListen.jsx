@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
-import { fetchToListenByUserId } from "../../fetching/local";
+import {
+	fetchToListenByUserId,
+	createNewListened,
+	fetchListenedByUserId,
+} from "../../fetching/local";
 import { useNavigate } from "react-router-dom";
 import DeleteToListen from "./DeleteToListen";
 
 export default function ToListen({ token, userId }) {
 	const [toListen, setToListen] = useState([]);
 	const [toListenList, setToListenList] = useState([]);
+	const [exists, setExists] = useState(false);
+	const [userListened, setUserListened] = useState({});
+	const [num, setNum] = useState(null);
 
 	useEffect(() => {
 		console.log("userId in ToListen", userId);
@@ -51,6 +58,91 @@ export default function ToListen({ token, userId }) {
 		setToListenList(sortedToListen);
 	}, [toListen]);
 
+	useEffect(() => {
+		async function getListenedByUserId() {
+			try {
+				const response = await fetchListenedByUserId(userId);
+				// console.log("response from FLBUI", response);
+				setUserListened(response);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+		getListenedByUserId();
+	}, [userId]);
+
+	function checkUniqueListened() {
+		const found = userListened.find(
+			(album) =>
+				album.album_name == toListen.album_name &&
+				album.artist == toListen.artist
+		);
+		// console.log("found", found);
+		setExists(found);
+		return found;
+	}
+
+	function getDate() {
+		let today = new Date();
+		let dd = String(today.getDate()).padStart(2, "0");
+		let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+		let yyyy = today.getFullYear();
+
+		today = mm + "/" + dd + "/" + yyyy;
+		return today;
+	}
+
+	// routes to single album page when search result is clicked
+	// async function handleClick(n) {
+	// 	event.preventDefault();
+	// 	setNum(n);
+	// }
+
+	async function handleListened(album) {
+		event.preventDefault();
+		let users_id = userId;
+		let artist = album.artist;
+		let album_name = album.album_name;
+		let image_url = album.image_url;
+		let release_date = album.release_date;
+		let rating = null;
+		let review = "";
+		let date_listened = getDate();
+
+		console.log(
+			"info",
+			users_id,
+			artist,
+			album_name,
+			image_url,
+			release_date,
+			review,
+			rating,
+			date_listened
+		);
+
+		try {
+			checkUniqueListened();
+			if (!exists) {
+				await createNewListened(
+					users_id,
+					artist,
+					album_name,
+					image_url,
+					release_date,
+					review,
+					rating,
+					date_listened
+				);
+				alert("added to listened list");
+			} else {
+				alert("This album is already on your Listened list.");
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
 	return (
 		<section id="to-listen-container">
 			<h1>TO LISTEN LIST</h1>
@@ -73,6 +165,9 @@ export default function ToListen({ token, userId }) {
 								<h3 className="album-info">
 									{album.album_name}
 								</h3>
+								<button onClick={() => handleListened(album)}>
+									Add to Listened
+								</button>
 								<DeleteToListen
 									to_listen_id={album.to_listen_id}
 								/>
