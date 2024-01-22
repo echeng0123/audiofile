@@ -115,7 +115,7 @@ export default function Search({ userId }) {
 							</div>
 						</button>
 					)}
-					{albums && (
+					{albums[1] && (
 						<button onClick={() => handleClick(1)}>
 							<div className="search-result">
 								<img src={albums[1].images[2].url} alt="" />
@@ -126,7 +126,7 @@ export default function Search({ userId }) {
 							</div>
 						</button>
 					)}
-					{albums && (
+					{albums[2] && (
 						<button onClick={() => handleClick(2)}>
 							<div className="search-result">
 								<img src={albums[2].images[2].url} alt="" />
@@ -137,7 +137,7 @@ export default function Search({ userId }) {
 							</div>
 						</button>
 					)}
-					{albums && (
+					{albums[3] && (
 						<button onClick={() => handleClick(3)}>
 							<div className="search-result">
 								<img src={albums[3].images[2].url} alt="" />
@@ -148,7 +148,7 @@ export default function Search({ userId }) {
 							</div>
 						</button>
 					)}
-					{albums && (
+					{albums[4] && (
 						<button onClick={() => handleClick(4)}>
 							<div className="search-result">
 								<img src={albums[4].images[2].url} alt="" />

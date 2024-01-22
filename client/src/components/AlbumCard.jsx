@@ -30,6 +30,7 @@ export default function AlbumCard({ userId, albums }) {
 				image_url,
 				release_date
 			);
+			alert("added album to 'to listen' list");
 		} catch (error) {
 			console.error(error);
 		}

@@ -212,7 +212,7 @@ button:focus-visible {
  }
 
 .album-art{
-    width: 10dvw;
+    height: 150px;
  }
 
 .album-info{
@@ -234,7 +234,8 @@ button:focus-visible {
 
 .album-art-name{
     display: flex;
-    margin-right: 1rem;
+    align-items: center;
+    margin: 0 1rem;
 }
 
 .listened-buttons-container{
