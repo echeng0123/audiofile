@@ -9,6 +9,7 @@ import DeleteListened from "./DeleteListened";
 export default function Profile({ token, userId }) {
 	const [username, setUsername] = useState("");
 	const [userIdNo, setUserIdNo] = useState(null);
+	const sortedListened = [];
 
 	useEffect(() => {
 		async function getUserInfoByUserId() {
@@ -51,6 +52,46 @@ export default function Profile({ token, userId }) {
 		setListenedList(listened);
 	}, [listened]);
 
+	// useEffect(() => {
+	// 	console.log("listened in UE", sortedListened);
+	// 	if (sortedListened.length > 0) {
+	// 		setListenedList(sortedListened);
+	// 	} else {
+	// 		setListenedList(listened);
+	// 	}
+	// 	// setListenedList(sortedListened);
+	// }, [listened, sortedListened]);
+
+	function handleAlphabetize(inputArray) {
+		sortedListened.push(
+			inputArray.sort(function (a, b) {
+				if (a.album_name < b.album_name) {
+					return -1;
+				}
+				if (a.album_name > b.album_name) {
+					return 1;
+				}
+				return 0;
+			})
+		);
+		return sortedListened;
+	}
+
+	function handleSortByDate(inputArray) {
+		sortedListened.push(
+			inputArray.sort(function (a, b) {
+				if (a.date_listened < b.date_listened) {
+					return -1;
+				}
+				if (a.date_listened > b.date_listened) {
+					return 1;
+				}
+				return 0;
+			})
+		);
+		return sortedListened;
+	}
+
 	return (
 		<section>
 			{username && (
@@ -78,7 +119,7 @@ export default function Profile({ token, userId }) {
 				<h4 style={{ textAlign: "left" }}>RECENT ACTIVITY</h4>
 				{listenedList ? (
 					<div id="profile-gallery">
-						{listenedList.map((album) => {
+						{listenedList.slice(0, 6).map((album) => {
 							return (
 								<div key={album.listened_id}>
 									<img
@@ -101,6 +142,12 @@ export default function Profile({ token, userId }) {
 					<></>
 				)}
 				<h4 style={{ textAlign: "left" }}>RECENT REVIEWS:</h4>
+				{/* <button onClick={() => handleAlphabetize(listened)}>
+					sort a-z
+				</button> */}
+				{/* <button onClick={() => handleSortByDate(listened)}>
+					sort by date added
+				</button> */}
 				{listenedList ? (
 					<div id="to-listen-gallery">
 						{listenedList.map((album) => {

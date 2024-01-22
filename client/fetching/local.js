@@ -7,7 +7,7 @@ export const fetchAllUsers = async () => {
 	try {
 		const response = await fetch(`${base_url}/users`);
 		const result = await response.json();
-		console.log("result from fetchAllUser ", result);
+		// console.log("result from fetchAllUser ", result);
 		return result;
 	} catch (error) {
 		console.error(error);
@@ -19,7 +19,7 @@ export const fetchUserByUserId = async (user_id) => {
 	try {
 		const response = await fetch(`${base_url}/users/${user_id}`);
 		const result = await response.json();
-		console.log("result from fetch single user ", result);
+		// console.log("result from fetch single user ", result);
 		return result;
 	} catch (error) {
 		console.error(error);
@@ -87,7 +87,7 @@ export const fetchAllToListen = async () => {
 	try {
 		const response = await fetch(`${base_url}/to_listen`);
 		const result = await response.json();
-		console.log("result from fetchAllToListen", result);
+		// console.log("result from fetchAllToListen", result);
 		return result;
 	} catch (error) {
 		console.error(error);
@@ -98,7 +98,7 @@ export const fetchToListenByUserId = async (user_id) => {
 	try {
 		const response = await fetch(`${base_url}/to_listen/user/${user_id}`);
 		const result = await response.json();
-		console.log("result from fetchToListenByUserId", result);
+		// console.log("result from fetchToListenByUserId", result);
 		return result;
 	} catch (error) {
 		console.error(error);

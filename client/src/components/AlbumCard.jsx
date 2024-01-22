@@ -81,6 +81,7 @@ export default function AlbumCard({ userId, albums }) {
 				rating,
 				date_listened
 			);
+			alert("added to listened list");
 		} catch (error) {
 			console.error(error);
 		}

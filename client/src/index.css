@@ -257,7 +257,7 @@ button:focus-visible {
     border: 2px solid rgb(11, 255, 11);
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .profile-album-art{
