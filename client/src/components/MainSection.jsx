@@ -25,7 +25,14 @@ export default function MainSection({
 			<Routes>
 				<Route
 					path="/"
-					element={<Home token={token} userId={userId} />}
+					element={
+						<Home
+							token={token}
+							setToken={setToken}
+							setUserId={setUserId}
+							userId={userId}
+						/>
+					}
 				></Route>
 				<Route
 					path="/to-listen"

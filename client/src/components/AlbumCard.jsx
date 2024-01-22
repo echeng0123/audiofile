@@ -84,9 +84,8 @@ export default function AlbumCard({ userId, albums }) {
 		let rating = value;
 		let date_listened = getDate();
 
-		checkUniqueListened();
-
 		try {
+			checkUniqueListened();
 			if (!exists) {
 				await createNewListened(
 					users_id,
