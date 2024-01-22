@@ -28,6 +28,7 @@ export default function Home({ token, setToken, setUserId, userId }) {
 
 	return (
 		<section id="home-container">
+			<h4>This site is currently under development.</h4>
 			{userId ? (
 				<div>
 					<h1>Welcome, {titleCase(username)}</h1>

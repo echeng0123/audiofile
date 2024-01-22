@@ -256,11 +256,13 @@ button:focus-visible {
 #profile-gallery{
     border: 2px solid rgb(11, 255, 11);
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .profile-album-art{
     width: 20dvw;
+    margin: 0 1rem;
 }
 
 /* PROFILE END --------------------------- */

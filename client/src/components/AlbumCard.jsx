@@ -35,6 +35,17 @@ export default function AlbumCard({ userId, albums }) {
 		}
 	}
 
+	function getDate() {
+		let today = new Date();
+		let dd = String(today.getDate()).padStart(2, "0");
+		let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+		let yyyy = today.getFullYear();
+
+		today = mm + "/" + dd + "/" + yyyy;
+		return today;
+	}
+	// console.log(getDate());
+
 	async function handleListened(event) {
 		event.preventDefault();
 		let users_id = userId;
@@ -44,7 +55,7 @@ export default function AlbumCard({ userId, albums }) {
 		let release_date = albums.release_date;
 		let review = "";
 		let rating = null;
-		let date_listened = null;
+		let date_listened = getDate();
 
 		console.log(
 			"info here",

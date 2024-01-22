@@ -35,14 +35,27 @@ export default function ToListen({ token, userId }) {
 		getToListenByUserId();
 	}, [userId]);
 
+	// sort alphabetically by album name
 	useEffect(() => {
 		console.log("toListen in UE", toListen);
-		setToListenList(toListen);
+		const sortedToListen = toListen.sort(function (a, b) {
+			if (a.album_name < b.album_name) {
+				return -1;
+			}
+			if (a.album_name > b.album_name) {
+				return 1;
+			}
+			return 0;
+		});
+		// setToListenList(toListen);
+		setToListenList(sortedToListen);
 	}, [toListen]);
 
 	return (
 		<section id="to-listen-container">
 			<h1>TO LISTEN LIST</h1>
+			{/* <button>sort a-z</button>
+			<button>sort by date added</button> */}
 			{toListenList ? (
 				<div id="to-listen-gallery">
 					{toListenList.map((album) => {
@@ -57,7 +70,9 @@ export default function ToListen({ token, userId }) {
 									className="album-art"
 								/>
 								<h3 className="album-info">{album.artist}</h3>
-								<p className="album-info">{album.album_name}</p>
+								<h3 className="album-info">
+									{album.album_name}
+								</h3>
 								<DeleteToListen
 									to_listen_id={album.to_listen_id}
 								/>

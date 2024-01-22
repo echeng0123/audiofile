@@ -86,6 +86,7 @@ export default function Profile({ token, userId }) {
 										alt="album art"
 										className="profile-album-art"
 									/>
+									<h4>{album.album_name}</h4>
 									<Rating
 										name="half-rating-read"
 										defaultValue={album.rating}
@@ -99,7 +100,7 @@ export default function Profile({ token, userId }) {
 				) : (
 					<></>
 				)}
-				<h4 style={{ textAlign: "left" }}>RECENT ACTIVITY:</h4>
+				<h4 style={{ textAlign: "left" }}>RECENT REVIEWS:</h4>
 				{listenedList ? (
 					<div id="to-listen-gallery">
 						{listenedList.map((album) => {

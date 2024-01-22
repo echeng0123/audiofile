@@ -50,7 +50,7 @@ const createTables = async () => {
             release_date TEXT,
             review TEXT,
             rating FLOAT(25),
-            date_listened INTEGER
+            date_listened TEXT
         );
         `
 	);
