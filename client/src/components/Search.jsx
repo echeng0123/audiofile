@@ -18,7 +18,7 @@ export default function Search({ userId }) {
 	useEffect(() => {
 		async function getToken() {
 			const response = await fetchToken();
-			console.log("spotify token in search component", response);
+			// console.log("spotify token in search component", response);
 			if (response) {
 				setSpotifyToken(response.access_token);
 				// localStorage.setItem("spotifyToken", response.access_token);
@@ -31,7 +31,7 @@ export default function Search({ userId }) {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log("handle submit in search function");
+		// console.log("handle submit in search function");
 
 		if (albumInput) {
 			setResults(!results);
@@ -45,8 +45,8 @@ export default function Search({ userId }) {
 	useEffect(() => {
 		let albumsTemp = [];
 		async function getAlbumSearch() {
-			console.log("spotifyToken in getAlbumSearch fn", spotifyToken);
-			console.log("albumInput in getAlbumSearch fn", albumInput);
+			// console.log("spotifyToken in getAlbumSearch fn", spotifyToken);
+			// console.log("albumInput in getAlbumSearch fn", albumInput);
 
 			const albumResponse = await fetchAlbumSearch(
 				albumInput,
@@ -75,8 +75,6 @@ export default function Search({ userId }) {
 	// routes to single album page when search result is clicked
 	async function handleClick(n) {
 		event.preventDefault();
-		console.log("i'm in handleclick");
-		console.log("n is", n);
 		setNum(n);
 		setIsAlbum(!isAlbum);
 	}

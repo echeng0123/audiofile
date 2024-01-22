@@ -1,8 +1,21 @@
-import { createNewToListen, createNewListened } from "../../fetching/local";
+import {
+	createNewToListen,
+	createNewListened,
+	fetchListenedById,
+	fetchListenedByUserId,
+} from "../../fetching/local";
+import EditListened from "./EditListened";
+import { Stack, Rating } from "@mui/material";
+import { useState, useEffect } from "react";
 
 export default function AlbumCard({ userId, albums }) {
-	console.log("we are in albumcard");
-	console.log("albums in albumcard", albums);
+	// console.log("we are in albumcard");
+	// console.log("albums in albumcard", albums);
+	const [isOpen, setIsOpen] = useState(false);
+	const [newReview, setNewReview] = useState("");
+	const [review, setReview] = useState("");
+	const [userListened, setUserListened] = useState({});
+	const [exists, setExists] = useState(false);
 
 	async function handleToListen(event) {
 		event.preventDefault();
@@ -12,16 +25,6 @@ export default function AlbumCard({ userId, albums }) {
 		let image_url = albums.images[1].url;
 		let release_date = albums.release_date;
 
-		console.log(
-			"info here",
-			JSON.stringify({
-				users_id,
-				artist,
-				album_name,
-				image_url,
-				release_date,
-			})
-		);
 		try {
 			await createNewToListen(
 				users_id,
@@ -45,7 +48,30 @@ export default function AlbumCard({ userId, albums }) {
 		today = mm + "/" + dd + "/" + yyyy;
 		return today;
 	}
-	// console.log(getDate());
+
+	useEffect(() => {
+		async function getListenedByUserId() {
+			try {
+				const response = await fetchListenedByUserId(userId);
+				console.log("response from FLBUI", response);
+				setUserListened(response);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+		getListenedByUserId();
+	}, [userId]);
+
+	function checkUniqueListened() {
+		const found = userListened.find(
+			(album) =>
+				album.album_name == albums.name &&
+				album.artist == albums.artists[0].name
+		);
+		console.log("found", found);
+		setExists(found);
+		return found;
+	}
 
 	async function handleListened(event) {
 		event.preventDefault();
@@ -54,38 +80,39 @@ export default function AlbumCard({ userId, albums }) {
 		let album_name = albums.name;
 		let image_url = albums.images[1].url;
 		let release_date = albums.release_date;
-		let review = "";
 		let rating = null;
 		let date_listened = getDate();
 
-		console.log(
-			"info here",
-			JSON.stringify({
-				users_id,
-				artist,
-				album_name,
-				image_url,
-				release_date,
-				review,
-				rating,
-				date_listened,
-			})
-		);
+		checkUniqueListened();
+
 		try {
-			await createNewListened(
-				users_id,
-				artist,
-				album_name,
-				image_url,
-				release_date,
-				review,
-				rating,
-				date_listened
-			);
-			alert("added to listened list");
+			if (!exists) {
+				await createNewListened(
+					users_id,
+					artist,
+					album_name,
+					image_url,
+					release_date,
+					review,
+					rating,
+					date_listened
+				);
+				alert("added to listened list");
+			} else {
+				alert("This album is already on your Listened list.");
+			}
 		} catch (error) {
 			console.error(error);
 		}
+	}
+
+	function handleOpen() {
+		setIsOpen(!isOpen);
+	}
+
+	async function handleReview(event) {
+		event.preventDefault();
+		setReview(newReview);
 	}
 
 	return (
@@ -127,9 +154,26 @@ export default function AlbumCard({ userId, albums }) {
 							</button>
 						</div>
 						<div>
-							<button className="album-button">
-								Add new review
+							<button
+								className="album-button"
+								onClick={handleOpen}
+							>
+								REVIEW ALBUM
 							</button>
+							{isOpen && (
+								<form onSubmit={handleReview}>
+									<textarea
+										autoFocus
+										// value={}
+										onChange={(e) =>
+											setNewReview(e.target.value)
+										}
+									></textarea>
+									<br />
+									<br />
+									<button type="submit">Submit review</button>
+								</form>
+							)}
 						</div>
 					</div>
 				</div>
