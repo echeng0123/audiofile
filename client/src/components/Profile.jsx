@@ -119,24 +119,26 @@ export default function Profile({ token, userId }) {
 				<h4 style={{ textAlign: "left" }}>RECENT ACTIVITY</h4>
 				{listenedList ? (
 					<div id="profile-gallery">
-						{listenedList.slice(0, 6).map((album) => {
-							return (
-								<div key={album.listened_id}>
-									<img
-										src={album.image_url}
-										alt="album art"
-										className="profile-album-art"
-									/>
-									<h4>{album.album_name}</h4>
-									<Rating
-										name="half-rating-read"
-										defaultValue={album.rating}
-										precision={0.5}
-										readOnly
-									/>
-								</div>
-							);
-						})}
+						{listenedList
+							.slice(listenedList.length - 6, listenedList.length)
+							.map((album) => {
+								return (
+									<div key={album.listened_id}>
+										<img
+											src={album.image_url}
+											alt="album art"
+											className="profile-album-art"
+										/>
+										<h4>{album.album_name}</h4>
+										<Rating
+											name="half-rating-read"
+											defaultValue={album.rating}
+											precision={0.5}
+											readOnly
+										/>
+									</div>
+								);
+							})}
 					</div>
 				) : (
 					<></>

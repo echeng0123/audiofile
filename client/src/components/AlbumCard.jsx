@@ -16,6 +16,7 @@ export default function AlbumCard({ userId, albums }) {
 	const [review, setReview] = useState("");
 	const [userListened, setUserListened] = useState({});
 	const [exists, setExists] = useState(false);
+	const [value, setValue] = useState(null);
 
 	async function handleToListen(event) {
 		event.preventDefault();
@@ -53,7 +54,7 @@ export default function AlbumCard({ userId, albums }) {
 		async function getListenedByUserId() {
 			try {
 				const response = await fetchListenedByUserId(userId);
-				console.log("response from FLBUI", response);
+				// console.log("response from FLBUI", response);
 				setUserListened(response);
 			} catch (error) {
 				console.error(error);
@@ -68,7 +69,7 @@ export default function AlbumCard({ userId, albums }) {
 				album.album_name == albums.name &&
 				album.artist == albums.artists[0].name
 		);
-		console.log("found", found);
+		// console.log("found", found);
 		setExists(found);
 		return found;
 	}
@@ -80,7 +81,7 @@ export default function AlbumCard({ userId, albums }) {
 		let album_name = albums.name;
 		let image_url = albums.images[1].url;
 		let release_date = albums.release_date;
-		let rating = null;
+		let rating = value;
 		let date_listened = getDate();
 
 		checkUniqueListened();
@@ -113,6 +114,11 @@ export default function AlbumCard({ userId, albums }) {
 	async function handleReview(event) {
 		event.preventDefault();
 		setReview(newReview);
+	}
+
+	async function handleRating(event, newValue) {
+		event.preventDefault();
+		setValue(newValue);
 	}
 
 	return (
@@ -148,17 +154,25 @@ export default function AlbumCard({ userId, albums }) {
 								to listen
 							</button>
 						</div>
-						<div>
-							<button className="album-button">
-								RATE/RATING HERE
-							</button>
+						<div id="rating">
+							<Stack spacing={1}>
+								<Rating
+									name="half-rating"
+									defaultValue={0}
+									precision={0.5}
+									value={value}
+									onChange={(event, newValue) => {
+										handleRating(event, newValue);
+									}}
+								/>
+							</Stack>
 						</div>
 						<div>
 							<button
 								className="album-button"
 								onClick={handleOpen}
 							>
-								REVIEW ALBUM
+								{isOpen ? "Close review panel" : "Add review"}
 							</button>
 							{isOpen && (
 								<form onSubmit={handleReview}>
