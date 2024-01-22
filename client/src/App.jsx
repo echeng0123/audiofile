@@ -1,6 +1,7 @@
 import "./App.css";
 import MainSection from "./components/MainSection";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 				userId={userId}
 				setUserId={setUserId}
 			/>
+			<Footer />
 		</section>
 	);
 }

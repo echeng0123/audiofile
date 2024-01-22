@@ -11,9 +11,9 @@ export const fetchToken = async () => {
 			},
 			body: "grant_type=client_credentials&client_id=8e7117e564634a948b48e068961f1a9c&client_secret=8bddd6cabc7448abb65fe3e47ba2d48f",
 		});
-		console.log("response from fetch token", response);
+		// console.log("response from fetch token", response);
 		const result = await response.json();
-		console.log("result from fetch token", result);
+		// console.log("result from fetch token", result);
 		return result;
 	} catch (error) {
 		console.error("Cannot get token!");
@@ -24,7 +24,7 @@ fetchToken();
 
 // grabs album object from spotify search endpoint
 export const fetchAlbumSearch = async (albumInput, spotifyToken) => {
-	console.log("spotifyToken in fetch album search", spotifyToken);
+	// console.log("spotifyToken in fetch album search", spotifyToken);
 	try {
 		console.log("...starting to fetch album");
 		const response = await fetch(`${base_url}${albumInput}&type=album`, {
@@ -35,7 +35,7 @@ export const fetchAlbumSearch = async (albumInput, spotifyToken) => {
 			},
 		});
 		const result = await response.json();
-		console.log("result from fetch album search", result);
+		// console.log("result from fetch album search", result);
 		return result;
 		// console.log("result.albums.items", result.albums.items);
 		// const genreArray = result.albums.items[0].genres;
