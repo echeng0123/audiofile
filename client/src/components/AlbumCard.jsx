@@ -65,25 +65,32 @@ export default function AlbumCard({ userId, albums, token }) {
 		let image_url = albums.images[1].url;
 		let release_date = albums.release_date;
 
-		try {
-			checkUniqueToListen();
-			if (!existsToListen) {
-				const newToListen = await createNewToListen(
-					users_id,
-					artist,
-					album_name,
-					image_url,
-					release_date
-				);
-				if (newToListen) {
-					toListenSnackbar();
-					// alert("added album to 'to listen' list");
+		if (token) {
+			try {
+				checkUniqueToListen();
+				if (!existsToListen) {
+					const newToListen = await createNewToListen(
+						users_id,
+						artist,
+						album_name,
+						image_url,
+						release_date
+					);
+					if (newToListen) {
+						toListenSnackbar();
+						// alert("added album to 'to listen' list");
+					}
+				} else {
+					alert(
+						"You have already added this to your To Listen list."
+					);
 				}
-			} else {
-				alert("You have already added this to your To Listen list.");
+			} catch (error) {
+				console.error(error);
 			}
-		} catch (error) {
-			console.error(error);
+		} else {
+			alert("Please log in to leave a review or add to lists");
+			nav("/login");
 		}
 	}
 
@@ -158,12 +165,18 @@ export default function AlbumCard({ userId, albums, token }) {
 				console.error(error);
 			}
 		} else {
+			alert("Please log in to leave a review or add to lists");
 			nav("/login");
 		}
 	}
 
 	function handleOpen() {
-		setIsOpen(!isOpen);
+		if (token) {
+			setIsOpen(!isOpen);
+		} else {
+			alert("Please log in to leave a review or add to lists");
+			nav("/login");
+		}
 	}
 
 	async function handleReview(event) {

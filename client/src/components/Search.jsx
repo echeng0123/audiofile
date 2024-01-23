@@ -35,10 +35,10 @@ export default function Search({ userId, token }) {
 
 		if (albumInput) {
 			setResults(!results);
+			console.log("album is", albumInput);
 		} else {
 			console.log("can't get results");
 		}
-		console.log("album is", albumInput);
 	};
 
 	// pull album search from spotify API
@@ -84,11 +84,13 @@ export default function Search({ userId, token }) {
 				console.error(error);
 			}
 		}
-		if (results) {
-			getAlbumSearch();
-		} else {
-			console.log("waiting for search term...");
-		}
+		getAlbumSearch();
+		// if (results) {
+		// 	console.log("results are ", results);
+		// 	getAlbumSearch();
+		// } else {
+		// 	console.log("waiting for search term...");
+		// }
 	}, [albumInput, spotifyToken, results]);
 
 	// routes to single album page when search result is clicked
