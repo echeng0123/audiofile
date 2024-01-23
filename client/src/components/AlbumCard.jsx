@@ -8,8 +8,9 @@ import {
 import EditListened from "./EditListened";
 import { Stack, Rating } from "@mui/material";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function AlbumCard({ userId, albums }) {
+export default function AlbumCard({ userId, albums, token }) {
 	// console.log("we are in albumcard");
 	// console.log("albums in albumcard", albums);
 	const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +22,8 @@ export default function AlbumCard({ userId, albums }) {
 	const [existsToListen, setExistsToListen] = useState(false);
 	const [value, setValue] = useState(null);
 	const [created, setCreated] = useState(false);
+
+	const nav = useNavigate();
 
 	// TO LISTEN SECTION
 	useEffect(() => {
@@ -129,29 +132,33 @@ export default function AlbumCard({ userId, albums }) {
 		let rating = value;
 		let date_listened = getDate();
 
-		try {
-			checkUniqueListened();
-			if (!exists) {
-				const newListenedCreated = await createNewListened(
-					users_id,
-					artist,
-					album_name,
-					image_url,
-					release_date,
-					review,
-					rating,
-					date_listened
-				);
-				if (newListenedCreated) {
-					setCreated(true);
-					listenedSnackbar();
-					// alert("added to listened list");
+		if (token) {
+			try {
+				checkUniqueListened();
+				if (!exists) {
+					const newListenedCreated = await createNewListened(
+						users_id,
+						artist,
+						album_name,
+						image_url,
+						release_date,
+						review,
+						rating,
+						date_listened
+					);
+					if (newListenedCreated) {
+						setCreated(true);
+						listenedSnackbar();
+						// alert("added to listened list");
+					}
+				} else {
+					alert("This album is already on your Listened list.");
 				}
-			} else {
-				alert("This album is already on your Listened list.");
+			} catch (error) {
+				console.error(error);
 			}
-		} catch (error) {
-			console.error(error);
+		} else {
+			nav("/login");
 		}
 	}
 

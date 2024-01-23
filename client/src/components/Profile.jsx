@@ -45,7 +45,7 @@ export default function Profile({ token, userId }) {
 			}
 		}
 		getListenedByUserId();
-	}, [userId]);
+	}, [userId, userIdNo]);
 
 	useEffect(() => {
 		console.log("listened in UE", listened);

@@ -29,12 +29,15 @@ export default function Home({ token, setToken, setUserId, userId }) {
 	return (
 		<section id="home-container">
 			<h4>This site is currently under development.</h4>
-			{userId ? (
+			{token ? (
 				<div>
 					<h1>Welcome, {titleCase(username)}</h1>
 					<p>Your user id is {userIdNo}.</p>
 				</div>
 			) : (
+				<></>
+			)}
+			{!token ? (
 				<div>
 					<h1>Log in to add items to lists. </h1>
 					<Login
@@ -43,6 +46,8 @@ export default function Home({ token, setToken, setUserId, userId }) {
 						setUserId={setUserId}
 					/>
 				</div>
+			) : (
+				<></>
 			)}
 		</section>
 	);

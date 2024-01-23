@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import AlbumCard from "./AlbumCard.jsx";
 // import { useNavigate } from "react-router-dom";
 
-export default function Search({ userId }) {
+export default function Search({ userId, token }) {
 	const [albums, setAlbums] = useState({});
 	const [albumInput, setAlbumInput] = useState("");
 	const [results, setResults] = useState(false);
 	const [spotifyToken, setSpotifyToken] = useState("");
 	const [num, setNum] = useState(null);
+	const [albumMessage, setAlbumMessage] = useState(false);
 
 	// const navigate = useNavigate();
 
@@ -65,7 +66,10 @@ export default function Search({ userId }) {
 							albumResponse.albums.items[i].album_type ===
 								"compilation"
 						) {
+							setAlbumMessage(false);
 							albumsTemp.push(albumResponse.albums.items[i]);
+						} else {
+							setAlbumMessage(true);
 						}
 					}
 					setAlbums(albumsTemp.slice(0, 5));
@@ -80,8 +84,12 @@ export default function Search({ userId }) {
 				console.error(error);
 			}
 		}
-		getAlbumSearch();
-	}, [albumInput]);
+		if (results) {
+			getAlbumSearch();
+		} else {
+			console.log("waiting for search term...");
+		}
+	}, [albumInput, spotifyToken, results]);
 
 	// routes to single album page when search result is clicked
 	async function handleClick(n) {
@@ -112,6 +120,11 @@ export default function Search({ userId }) {
 			{results && (
 				// show first 5 results from spotify API
 				<div id="search-dropdown">
+					{albumMessage && (
+						<h5>
+							These are the closest album matches to your query.
+						</h5>
+					)}
 					<p>search result here</p>
 					{albums && (
 						<button onClick={() => handleClick(0)}>
@@ -170,7 +183,9 @@ export default function Search({ userId }) {
 					)}
 				</div>
 			)}
-			{num != null && <AlbumCard userId={userId} albums={albums[num]} />}
+			{num != null && (
+				<AlbumCard userId={userId} albums={albums[num]} token={token} />
+			)}
 		</section>
 	);
 }

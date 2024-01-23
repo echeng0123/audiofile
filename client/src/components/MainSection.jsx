@@ -44,7 +44,7 @@ export default function MainSection({
 				></Route>
 				<Route
 					path="/search"
-					element={<Search userId={userId} />}
+					element={<Search userId={userId} token={token} />}
 				></Route>
 				<Route path="/card" element={<AlbumCard />}></Route>
 				<Route
