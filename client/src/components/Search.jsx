@@ -9,7 +9,6 @@ export default function Search({ userId }) {
 	const [albumInput, setAlbumInput] = useState("");
 	const [results, setResults] = useState(false);
 	const [spotifyToken, setSpotifyToken] = useState("");
-	const [isAlbum, setIsAlbum] = useState(false);
 	const [num, setNum] = useState(null);
 
 	// const navigate = useNavigate();
@@ -87,8 +86,8 @@ export default function Search({ userId }) {
 	// routes to single album page when search result is clicked
 	async function handleClick(n) {
 		event.preventDefault();
+		console.log("n is ", n);
 		setNum(n);
-		setIsAlbum(!isAlbum);
 	}
 
 	return (
@@ -171,9 +170,7 @@ export default function Search({ userId }) {
 					)}
 				</div>
 			)}
-			{isAlbum && num != null && (
-				<AlbumCard userId={userId} albums={albums[num]} />
-			)}
+			{num != null && <AlbumCard userId={userId} albums={albums[num]} />}
 		</section>
 	);
 }

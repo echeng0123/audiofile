@@ -261,18 +261,6 @@ export default function AlbumCard({ userId, albums }) {
 						</div>
 					</div>
 				</div>
-
-				<div id="album-review">
-					<h3>Your review here, if it exists.</h3>
-					<p>
-						Generated Lorem Ipsum Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit, sed do eiusmod tempor
-						incididunt ut labore et dolore magna aliqua. Sit amet
-						nisl suscipit adipiscing bibendum est ultricies. Arcu
-						non sodales neque sodales ut etiam sit. Eget duis at
-						tellus at urna condimentum mattis pellentesque.{" "}
-					</p>
-				</div>
 			</div>
 		</section>
 	);
