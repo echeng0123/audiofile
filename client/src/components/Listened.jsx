@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchListenedByUserId } from "../../fetching/local";
+import { fetchListenedByUserId, fetchUserByUserId } from "../../fetching/local";
 import { useNavigate } from "react-router-dom";
 import DeleteListened from "./DeleteListened";
 import EditListened from "./EditListened";
@@ -8,6 +8,8 @@ import Rating from "@mui/material/Rating";
 export default function Listened({ token, userId }) {
 	const [listened, setListened] = useState([]);
 	const [listenedList, setListenedList] = useState([]);
+	const [username, setUsername] = useState("");
+	const [userIdNo, setUserIdNo] = useState(null);
 
 	const navigate = useNavigate();
 
@@ -16,9 +18,19 @@ export default function Listened({ token, userId }) {
 	}
 
 	useEffect(() => {
+		async function getUserInfoByUserId() {
+			const response = await fetchUserByUserId(userId);
+			console.log("response from user id", response);
+			setUsername(response.username);
+			setUserIdNo(response.users_id);
+		}
+		getUserInfoByUserId();
+	}, [userId]);
+
+	useEffect(() => {
 		async function getListenedByUserId() {
-			console.log("userId in getListenedByUserId", userId);
-			const ListenedResponse = await fetchListenedByUserId(userId);
+			console.log("userId in getListenedByUserId", userIdNo);
+			const ListenedResponse = await fetchListenedByUserId(userIdNo);
 			console.log("listened response", ListenedResponse);
 			try {
 				if (ListenedResponse) {
@@ -30,7 +42,7 @@ export default function Listened({ token, userId }) {
 			}
 		}
 		getListenedByUserId();
-	}, [userId]);
+	}, [userIdNo]);
 
 	useEffect(() => {
 		console.log("listened in UE", listened);

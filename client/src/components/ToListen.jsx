@@ -3,6 +3,7 @@ import {
 	fetchToListenByUserId,
 	createNewListened,
 	fetchListenedByUserId,
+	fetchUserByUserId,
 } from "../../fetching/local";
 import { useNavigate } from "react-router-dom";
 import DeleteToListen from "./DeleteToListen";
@@ -13,11 +14,18 @@ export default function ToListen({ token, userId }) {
 	const [exists, setExists] = useState(false);
 	const [userListened, setUserListened] = useState({});
 	const [num, setNum] = useState(null);
+	const [username, setUsername] = useState("");
+	const [userIdNo, setUserIdNo] = useState(null);
 
 	useEffect(() => {
-		console.log("userId in ToListen", userId);
-		console.log("token in ToListen", token);
-	}, []);
+		async function getUserInfoByUserId() {
+			const response = await fetchUserByUserId(userId);
+			console.log("response from user id", response);
+			setUsername(response.username);
+			setUserIdNo(response.users_id);
+		}
+		getUserInfoByUserId();
+	}, [userId]);
 
 	const navigate = useNavigate();
 
@@ -27,8 +35,8 @@ export default function ToListen({ token, userId }) {
 
 	useEffect(() => {
 		async function getToListenByUserId() {
-			console.log("userId in getToListenByUserId", userId);
-			const toListenResponse = await fetchToListenByUserId(userId);
+			console.log("userIdNo in getToListenByUserId", userIdNo);
+			const toListenResponse = await fetchToListenByUserId(userIdNo);
 			console.log("to listen response", toListenResponse);
 			try {
 				if (toListenResponse) {
@@ -40,7 +48,7 @@ export default function ToListen({ token, userId }) {
 			}
 		}
 		getToListenByUserId();
-	}, [userId]);
+	}, [userIdNo]);
 
 	// sort alphabetically by album name
 	useEffect(() => {
@@ -61,7 +69,7 @@ export default function ToListen({ token, userId }) {
 	useEffect(() => {
 		async function getListenedByUserId() {
 			try {
-				const response = await fetchListenedByUserId(userId);
+				const response = await fetchListenedByUserId(userIdNo);
 				// console.log("response from FLBUI", response);
 				setUserListened(response);
 			} catch (error) {
@@ -69,7 +77,7 @@ export default function ToListen({ token, userId }) {
 			}
 		}
 		getListenedByUserId();
-	}, [userId]);
+	}, [userIdNo]);
 
 	function checkUniqueListened() {
 		const found = userListened.find(
