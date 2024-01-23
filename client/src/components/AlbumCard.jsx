@@ -1,6 +1,7 @@
 import {
 	createNewToListen,
 	createNewListened,
+	fetchToListenByUserId,
 	fetchListenedById,
 	fetchListenedByUserId,
 } from "../../fetching/local";
@@ -15,8 +16,43 @@ export default function AlbumCard({ userId, albums }) {
 	const [newReview, setNewReview] = useState("");
 	const [review, setReview] = useState("");
 	const [userListened, setUserListened] = useState({});
+	const [userToListen, setUserToListen] = useState({});
 	const [exists, setExists] = useState(false);
+	const [existsToListen, setExistsToListen] = useState(false);
 	const [value, setValue] = useState(null);
+	const [created, setCreated] = useState(false);
+
+	// TO LISTEN SECTION
+	useEffect(() => {
+		async function getToListenByUserId() {
+			try {
+				const response = await fetchToListenByUserId(userId);
+				// console.log("response from FLBUI", response);
+				setUserToListen(response);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+		getToListenByUserId();
+	}, [userId]);
+
+	// useEffect(() => {
+	// 	console.log("usertolisten", userToListen);
+	// 	if (userToListen) {
+	// 		checkUniqueToListen();
+	// 	}
+	// }, []);
+
+	function checkUniqueToListen() {
+		const foundToListen = userToListen.find(
+			(album) =>
+				album.album_name == albums.name &&
+				album.artist == albums.artists[0].name
+		);
+		// console.log("foundToListen", found);
+		setExistsToListen(foundToListen);
+		return foundToListen;
+	}
 
 	async function handleToListen(event) {
 		event.preventDefault();
@@ -27,14 +63,22 @@ export default function AlbumCard({ userId, albums }) {
 		let release_date = albums.release_date;
 
 		try {
-			await createNewToListen(
-				users_id,
-				artist,
-				album_name,
-				image_url,
-				release_date
-			);
-			alert("added album to 'to listen' list");
+			checkUniqueToListen();
+			if (!existsToListen) {
+				const newToListen = await createNewToListen(
+					users_id,
+					artist,
+					album_name,
+					image_url,
+					release_date
+				);
+				if (newToListen) {
+					toListenSnackbar();
+					// alert("added album to 'to listen' list");
+				}
+			} else {
+				alert("You have already added this to your To Listen list.");
+			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -50,6 +94,7 @@ export default function AlbumCard({ userId, albums }) {
 		return today;
 	}
 
+	// LISTENED SECTION
 	useEffect(() => {
 		async function getListenedByUserId() {
 			try {
@@ -87,7 +132,7 @@ export default function AlbumCard({ userId, albums }) {
 		try {
 			checkUniqueListened();
 			if (!exists) {
-				await createNewListened(
+				const newListenedCreated = await createNewListened(
 					users_id,
 					artist,
 					album_name,
@@ -97,7 +142,11 @@ export default function AlbumCard({ userId, albums }) {
 					rating,
 					date_listened
 				);
-				alert("added to listened list");
+				if (newListenedCreated) {
+					setCreated(true);
+					listenedSnackbar();
+					// alert("added to listened list");
+				}
 			} else {
 				alert("This album is already on your Listened list.");
 			}
@@ -120,8 +169,30 @@ export default function AlbumCard({ userId, albums }) {
 		setValue(newValue);
 	}
 
+	function toListenSnackbar() {
+		var x = document.getElementById("snackbar");
+		x.className = "show";
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
+	function listenedSnackbar() {
+		var x = document.getElementById("snackbar2");
+		x.className = "show";
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
 	return (
 		<section id="album-card-container">
+			<div id="snackbar">
+				<h3>Added to To Listen list</h3>
+			</div>
+			<div id="snackbar2">
+				<h3>Added to Listened list</h3>
+			</div>
 			<div id="album-info-review">
 				<div id="album-info-art">
 					<img src={albums.images[1].url} alt="album art" />
@@ -143,9 +214,9 @@ export default function AlbumCard({ userId, albums }) {
 								className="album-button"
 								onClick={handleListened}
 							>
-								listen
+								{created ? "listened" : "listen"}
 							</button>
-							<button className="album-button">favorite</button>
+							{/* <button className="album-button">favorite</button> */}
 							<button
 								className="album-button"
 								onClick={handleToListen}

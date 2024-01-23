@@ -13,6 +13,7 @@ export default function DeleteToListen({ to_listen_id }) {
 			console.error(error);
 		}
 	}
+
 	return (
 		<div>
 			<button onClick={handleSubmit} className="album-info">

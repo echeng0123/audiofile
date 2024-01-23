@@ -162,7 +162,7 @@ export const fetchAllListened = async () => {
 	try {
 		const response = await fetch(`${base_url}/listened`);
 		const result = await response.json();
-		console.log("result from fetchAllListened", result);
+		// console.log("result from fetchAllListened", result);
 		return result;
 	} catch (error) {
 		console.error(error);
@@ -173,7 +173,7 @@ export const fetchListenedById = async (listened_id) => {
 	try {
 		const response = await fetch(`${base_url}/listened/${listened_id}`);
 		const result = await response.json();
-		console.log("result from fetchListenedById", result);
+		// console.log("result from fetchListenedById", result);
 		return result;
 	} catch (error) {
 		console.error(error);
@@ -184,7 +184,7 @@ export const fetchListenedByUserId = async (user_id) => {
 	try {
 		const response = await fetch(`${base_url}/listened/user/${user_id}`);
 		const result = await response.json();
-		console.log("result from fetchListenedByUserId", result);
+		// console.log("result from fetchListenedByUserId", result);
 		return result;
 	} catch (error) {
 		console.error(error);
@@ -220,7 +220,7 @@ export const createNewListened = async (
 			}),
 		});
 		const result = await response.json();
-		console.log("result from createNewListened", result);
+		// console.log("result from createNewListened", result);
 		return result;
 	} catch (error) {
 		console.error("Cannot post new listened", error);

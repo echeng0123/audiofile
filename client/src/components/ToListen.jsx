@@ -124,7 +124,7 @@ export default function ToListen({ token, userId }) {
 		try {
 			checkUniqueListened();
 			if (!exists) {
-				await createNewListened(
+				const newListenedResult = await createNewListened(
 					users_id,
 					artist,
 					album_name,
@@ -134,7 +134,10 @@ export default function ToListen({ token, userId }) {
 					rating,
 					date_listened
 				);
-				alert("added to listened list");
+				if (newListenedResult) {
+					// alert("added to listened list");
+					myFunction();
+				}
 			} else {
 				alert("This album is already on your Listened list.");
 			}
@@ -143,11 +146,22 @@ export default function ToListen({ token, userId }) {
 		}
 	}
 
+	function myFunction() {
+		var x = document.getElementById("snackbar");
+		x.className = "show";
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
 	return (
 		<section id="to-listen-container">
 			<h1>TO LISTEN LIST</h1>
 			{/* <button>sort a-z</button>
 			<button>sort by date added</button> */}
+			<div id="snackbar">
+				<h2>Added to your Listened list</h2>
+			</div>
 			{toListenList ? (
 				<div id="to-listen-gallery">
 					{toListenList.map((album) => {
