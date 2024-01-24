@@ -94,6 +94,7 @@ export default function AlbumCard({ userId, albums, token }) {
 		}
 	}
 
+	// gets date
 	function getDate() {
 		let today = new Date();
 		let dd = String(today.getDate()).padStart(2, "0");
