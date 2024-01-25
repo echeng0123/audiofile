@@ -130,6 +130,7 @@ export default function AlbumCard({ userId, albums, token }) {
 		return found;
 	}
 
+	// button for clicking "add to listened"
 	async function handleListened(event) {
 		event.preventDefault();
 		let users_id = userId;
