@@ -29,6 +29,7 @@ export default function MobileSideNav({ token }) {
 
 	return (
 		<div>
+			<h1 id="main-logo">audiofile</h1>
 			<div
 				id="buttonX"
 				className="container"
@@ -38,7 +39,6 @@ export default function MobileSideNav({ token }) {
 				<div className="bar2"></div>
 				<div className="bar3"></div>
 			</div>
-
 			<div id="mySidenav" className="sidenav">
 				<a href="/">home</a>
 				<a href="/search">search</a>

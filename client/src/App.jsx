@@ -28,7 +28,6 @@ function App() {
 
 	return (
 		<section id="app-container">
-			<h1 id="main-logo">audiofile</h1>
 			<NavBar token={token} userId={userId} />
 			{/* {!isMobile && <NavBar token={token} userId={userId} />} */}
 			{/* {isMobile && <MobileSideNav token={token} />} */}

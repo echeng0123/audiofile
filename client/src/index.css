@@ -11,6 +11,15 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  text-align: center;
+}
+
+#mySidenav, #main-logo{
+    display: grid;
+    visibility: hidden;
+    height: 0;
+    width: 0;
 }
 
 a { 
@@ -24,10 +33,15 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  display: grid;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+#footer-container{
+    display: grid;
+    place-content: center;
 }
 
 h1 {
@@ -54,24 +68,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
 
 /* CONTAINERS -------------------------- */
 #app-container {
     border: 1px solid red;
-    width: auto;
-    height: auto;
+    width: 90dvw;
+    /* height: 90dvh; */
+    display: grid;
+    justify-content: center;
+    align-content: space-between;
 }
 
 #main-section-container{
@@ -87,10 +92,14 @@ button:focus-visible {
 }
 
 #navbar-container{
+    position: absolute;
+    top: 0;
+    /* right: 25dvw; */
     border: 1px solid rgb(11, 255, 11);
     margin: 1rem;
     padding: 1rem;
     display: flex;
+    width: 85%;
     justify-content: space-between;
 }
 
@@ -258,12 +267,24 @@ button:focus-visible {
     border: 2px solid rgb(11, 255, 11);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    place-content: space-evenly;
+    place-items: center;
 }
 
 .profile-album-art{
     width: 20dvw;
-    margin: 0 1rem;
+    margin: 1rem;
+}
+
+.recent-activity-item{
+    max-width: 30dvw;
+    display: inline;
+    place-content: center;
+    text-align: center;
+}
+
+.profile-album-art{
+    align-items: flex-start;
 }
 
 /* PROFILE END --------------------------- */
@@ -535,8 +556,10 @@ button:focus-visible {
 
     #main-logo{
         padding: 0;
-        margin: 1rem 0 0 0;
-        text-align: center;
+        margin: 0;
+        position: absolute;
+        top: 1rem;
+        right: 25vw;
     }
 
     /* SIDEBAR STYLING START --------------------------------- */
