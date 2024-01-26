@@ -372,6 +372,48 @@ button:focus-visible {
         place-items: center;
     }
 
+    /* PROFILE SECTION MOBILE START -------------------------- */
+    #album-card-to-listen{
+        display: grid;
+        width: 100%;
+    }
+
+    .album-art-name{
+        padding: 1rem 0;
+        display: grid;
+        place-items: center;
+    }
+
+    .listened-album-info{
+        text-align: center;
+    }
+
+    .listened-buttons-container{
+        display: flex;
+        place-content: center;
+    }
+
+    #profile-gallery{
+        display: grid;
+        place-items: center;
+    }
+
+    .recent-activity-item{
+        margin: 1rem 0;
+        display: grid;
+        place-content: center;
+        place-items: center;
+        text-align: center;
+    }
+
+    .profile-album-art, .album-art{
+        width: 60dvw;
+        height: auto;
+    }
+
+    /* PROFILE SECTION MOBILE END -------------------------- */
+
+
     /* hide the main navbar on mobile */
     #navbar-container{
         display: grid;

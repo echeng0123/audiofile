@@ -93,7 +93,7 @@ export default function Profile({ token, userId }) {
 	}
 
 	return (
-		<section>
+		<section id="profile-container">
 			{username && (
 				<div style={{ display: "flex", justifyContent: "flex-start" }}>
 					<h2
@@ -123,7 +123,10 @@ export default function Profile({ token, userId }) {
 							.slice(listenedList.length - 6, listenedList.length)
 							.map((album) => {
 								return (
-									<div key={album.listened_id}>
+									<div
+										key={album.listened_id}
+										className="recent-activity-item"
+									>
 										<img
 											src={album.image_url}
 											alt="album art"
