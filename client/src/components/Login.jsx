@@ -73,7 +73,7 @@ export default function Login({ token, setToken, setUserId }) {
 					</div>
 				)}
 				<br />
-				<button type="submit" className="clear-button">
+				<button type="submit" className="submit-button">
 					Submit
 				</button>
 			</form>

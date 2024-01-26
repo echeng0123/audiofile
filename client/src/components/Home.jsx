@@ -39,7 +39,6 @@ export default function Home({ token, setToken, setUserId, userId }) {
 			)}
 			{!token ? (
 				<div>
-					<h1>Log in to add items to lists. </h1>
 					<Login
 						token={token}
 						setToken={setToken}

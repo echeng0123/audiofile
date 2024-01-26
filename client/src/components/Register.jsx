@@ -89,6 +89,7 @@ export default function Register() {
 						onSubmit={(event) => {
 							handleSubmit(event);
 						}}
+						id="register-form"
 					>
 						<div id="login-text">
 							<label>
@@ -149,7 +150,7 @@ export default function Register() {
 						{text3 && <h3>Can't create new account.</h3>}
 						{text4 && <h3>Username too short.</h3>}
 						<br />
-						<button className="clear-button">Submit</button>
+						<button className="submit-button">Submit</button>
 					</form>
 					{/* <div id="snackbar">
 						<h1>You are registered!</h1>
