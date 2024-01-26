@@ -358,12 +358,14 @@ button:focus-visible {
     #app-container{
         display: flex;
         flex-direction: column;
-        height: 96vh;
+        /* height: 96dvh; */
         justify-content: space-between;
     }
 
     #main-section-container{
         margin-top: -3rem;
+        margin: 0;
+        padding: 1rem;
     }
 
     #footer-container{
@@ -376,6 +378,8 @@ button:focus-visible {
     #album-card-to-listen{
         display: grid;
         width: 100%;
+        place-content: center;
+        place-items: center;
     }
 
     .album-art-name{
@@ -412,6 +416,24 @@ button:focus-visible {
     }
 
     /* PROFILE SECTION MOBILE END -------------------------- */
+
+    /* TO LISTEN SECTION MOBILE START -------------------------- */
+    #to-listen-container{
+        margin:0;
+    }
+
+    #to-listen-header{
+        padding: 0.3rem;
+        margin: 0;
+        text-align: center;
+    }
+
+    .album-info{
+        text-align: center;
+    }
+
+    /* TO LISTEN SECTION MOBILE END ---------------------------- */
+
 
 
     /* hide the main navbar on mobile */

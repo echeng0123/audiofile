@@ -164,7 +164,7 @@ export default function ToListen({ token, userId }) {
 
 	return (
 		<section id="to-listen-container">
-			<h1>TO LISTEN LIST</h1>
+			<h1 id="to-listen-header">TO LISTEN LIST</h1>
 			{/* <button>sort a-z</button>
 			<button>sort by date added</button> */}
 			<div id="snackbar">
