@@ -3,8 +3,10 @@ import { useState, useEffect } from "react";
 export default function MobileSideNav({ token }) {
 	const buttonX = document.getElementById("buttonX");
 	const [isOpen, setIsOpen] = useState(false);
+	// console.log("buttonX", buttonX);
 
 	function myFunction(x) {
+		// document.querySelector("buttonX").toggle("change");
 		x.classList.toggle("change");
 		setIsOpen(!isOpen);
 	}

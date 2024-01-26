@@ -356,8 +356,17 @@ button:focus-visible {
         width: 90dvw;
     }
 
-    #nav-container{
+    #navbar-container{
         display: grid;
+        visibility: hidden;
+        height: 0;
+        width: 0;
+
+        & .dropdown-content{
+            display: grid;
+            width: 0;
+            height: 0;
+        }
     }
 
     /* SIDEBAR STYLING START --------------------------------- */
