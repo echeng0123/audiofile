@@ -2,6 +2,7 @@ import "./App.css";
 import MainSection from "./components/MainSection";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import MobileSideNav from "./components/MobileSideNav";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 		<section id="app-container">
 			<h1>APP</h1>
 			<NavBar token={token} userId={userId} />
+			<MobileSideNav token={token} />
 			<MainSection
 				spotifyToken={spotifyToken}
 				setSpotifyToken={setSpotifyToken}
