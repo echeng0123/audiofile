@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import DeleteListened from "./DeleteListened";
 import EditListened from "./EditListened";
 import Rating from "@mui/material/Rating";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 export default function Listened({ token, userId }) {
 	const [listened, setListened] = useState([]);
@@ -81,6 +82,15 @@ export default function Listened({ token, userId }) {
 											defaultValue={album.rating}
 											precision={0.5}
 											readOnly
+											emptyIcon={
+												<StarBorderIcon
+													style={{
+														opacity: 0.55,
+														color: "white",
+													}}
+													fontSize="inherit"
+												/>
+											}
 										/>
 										<p>{album.review}</p>
 									</div>
