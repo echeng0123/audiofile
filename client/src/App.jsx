@@ -28,20 +28,24 @@ function App() {
 
 	return (
 		<section id="app-container">
-			<h1>APP</h1>
+			<h1 id="main-logo">audiofile</h1>
 			<NavBar token={token} userId={userId} />
 			{/* {!isMobile && <NavBar token={token} userId={userId} />} */}
 			{/* {isMobile && <MobileSideNav token={token} />} */}
 			<MobileSideNav token={token} />
-			<MainSection
-				spotifyToken={spotifyToken}
-				setSpotifyToken={setSpotifyToken}
-				token={token}
-				setToken={setToken}
-				userId={userId}
-				setUserId={setUserId}
-			/>
-			<Footer />
+			<div>
+				<MainSection
+					spotifyToken={spotifyToken}
+					setSpotifyToken={setSpotifyToken}
+					token={token}
+					setToken={setToken}
+					userId={userId}
+					setUserId={setUserId}
+				/>
+			</div>
+			<div id="footer">
+				<Footer />
+			</div>
 		</section>
 	);
 }

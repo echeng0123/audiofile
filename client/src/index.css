@@ -348,14 +348,31 @@ button:focus-visible {
         width: 100dvw;
         margin: 1rem;
         display: flex;
-        place-content: center;
-        /* overflow: hidden; */
+        flex-direction: column;
+        justify-content: center;
+        align-self: flex-start;
+        overflow-x: hidden;
+        height: 100%;
     }
 
     #app-container{
-        width: 90dvw;
+        display: flex;
+        flex-direction: column;
+        height: 96vh;
+        justify-content: space-between;
     }
 
+    #main-section-container{
+        margin-top: -3rem;
+    }
+
+    #footer-container{
+        margin-top: 5rem;
+        display: grid;
+        place-items: center;
+    }
+
+    /* hide the main navbar on mobile */
     #navbar-container{
         display: grid;
         visibility: hidden;
@@ -367,6 +384,12 @@ button:focus-visible {
             width: 0;
             height: 0;
         }
+    }
+
+    #main-logo{
+        padding: 0;
+        margin: 1rem 0 0 0;
+        text-align: center;
     }
 
     /* SIDEBAR STYLING START --------------------------------- */
