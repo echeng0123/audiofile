@@ -51,7 +51,7 @@ export default function Listened({ token, userId }) {
 
 	return (
 		<section id="listened-container">
-			<h1>LISTENED LIST</h1>
+			<h1 id="listened-header">LISTENED LIST</h1>
 			{listenedList ? (
 				<div id="to-listen-gallery">
 					{listenedList.map((album) => {

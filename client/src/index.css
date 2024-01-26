@@ -417,12 +417,12 @@ button:focus-visible {
 
     /* PROFILE SECTION MOBILE END -------------------------- */
 
-    /* TO LISTEN SECTION MOBILE START -------------------------- */
+    /* TO LISTEN & LISTENED SECTION MOBILE START -------------------------- */
     #to-listen-container{
         margin:0;
     }
 
-    #to-listen-header{
+    #to-listen-header, #listened-header{
         padding: 0.3rem;
         margin: 0;
         text-align: center;
@@ -432,7 +432,12 @@ button:focus-visible {
         text-align: center;
     }
 
-    /* TO LISTEN SECTION MOBILE END ---------------------------- */
+    .listened-buttons-container{
+        display: grid;
+        place-items: center;
+    }
+
+    /* TO LISTEN & LISTENED SECTION MOBILE END ---------------------------- */
 
 
 
