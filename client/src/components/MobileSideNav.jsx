@@ -40,8 +40,8 @@ export default function MobileSideNav({ token }) {
 			</div>
 
 			<div id="mySidenav" className="sidenav">
-				<a href="/">Home</a>
-				<a href="/search"></a>
+				<a href="/">home</a>
+				<a href="/search">search</a>
 				{token && <a href="/to-listen">to listen</a>}
 				{token && <a href="/listened">listened</a>}
 				{token && <a href="/profile">profile</a>}

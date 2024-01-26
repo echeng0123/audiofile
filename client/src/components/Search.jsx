@@ -103,35 +103,40 @@ export default function Search({ userId, token }) {
 	return (
 		<section id="search-bar-container">
 			{/* <img src={search} alt="magnifying glass" id="search-icon" /> */}
-			<h3>Search for albums</h3>
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="Search"></label>
-				<input
-					id="musicChoice"
-					type="text"
-					name="search"
-					placeholder="Enter any album from Spotify"
-					// onFocus={(event) =>
-					// 	setOldInput(
-					// 		(event.target.oldvalue = event.target.value)
-					// 	)
-					// }
-					onChange={(event) => setAlbumInput(event.target.value)}
-				/>
-			</form>
+			<div id="search-bar-header-form">
+				<h3>Search for albums</h3>
+				<form onSubmit={handleSubmit}>
+					<label htmlFor="Search"></label>
+					<input
+						id="musicChoice"
+						type="text"
+						name="search"
+						placeholder="Enter any album from Spotify"
+						// onFocus={(event) =>
+						// 	setOldInput(
+						// 		(event.target.oldvalue = event.target.value)
+						// 	)
+						// }
+						onChange={(event) => setAlbumInput(event.target.value)}
+					/>
+				</form>
+			</div>
 			{results && (
 				// show first 5 results from spotify API
 				<div id="search-dropdown">
 					{albumMessage && (
-						<h5>
+						<h5 id="album-message">
 							These are the closest album matches to your query.
 						</h5>
 					)}
-					<p>search result here</p>
 					{albums && (
 						<button onClick={() => handleClick(0)}>
 							<div className="search-result">
-								<img src={albums[0].images[2].url} alt="" />
+								<img
+									src={albums[0].images[2].url}
+									alt=""
+									className="search-icon"
+								/>
 								<div className="search-result-details">
 									<p>{albums[0].name}</p>
 									<p>Album by {albums[0].artists[0].name}</p>
@@ -142,7 +147,11 @@ export default function Search({ userId, token }) {
 					{albums[1] && (
 						<button onClick={() => handleClick(1)}>
 							<div className="search-result">
-								<img src={albums[1].images[2].url} alt="" />
+								<img
+									src={albums[1].images[2].url}
+									alt=""
+									className="search-icon"
+								/>
 								<div className="search-result-details">
 									<p>{albums[1].name}</p>
 									<p>Album by {albums[1].artists[0].name}</p>
@@ -153,7 +162,11 @@ export default function Search({ userId, token }) {
 					{albums[2] && (
 						<button onClick={() => handleClick(2)}>
 							<div className="search-result">
-								<img src={albums[2].images[2].url} alt="" />
+								<img
+									src={albums[2].images[2].url}
+									alt=""
+									className="search-icon"
+								/>
 								<div className="search-result-details">
 									<p>{albums[2].name}</p>
 									<p>Album by {albums[2].artists[0].name}</p>
@@ -164,7 +177,11 @@ export default function Search({ userId, token }) {
 					{albums[3] && (
 						<button onClick={() => handleClick(3)}>
 							<div className="search-result">
-								<img src={albums[3].images[2].url} alt="" />
+								<img
+									src={albums[3].images[2].url}
+									alt=""
+									className="search-icon"
+								/>
 								<div className="search-result-details">
 									<p>{albums[3].name}</p>
 									<p>Album by {albums[3].artists[0].name}</p>
@@ -175,7 +192,11 @@ export default function Search({ userId, token }) {
 					{albums[4] && (
 						<button onClick={() => handleClick(4)}>
 							<div className="search-result">
-								<img src={albums[4].images[2].url} alt="" />
+								<img
+									src={albums[4].images[2].url}
+									alt=""
+									className="search-icon"
+								/>
 								<div className="search-result-details">
 									<p>{albums[4].name}</p>
 									<p>Album by {albums[4].artists[0].name}</p>
