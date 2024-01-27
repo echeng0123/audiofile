@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Rating } from "@mui/material";
 import EditListened from "./EditListened";
 import DeleteListened from "./DeleteListened";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 export default function Profile({ token, userId }) {
 	const [username, setUsername] = useState("");
@@ -95,8 +96,8 @@ export default function Profile({ token, userId }) {
 	return (
 		<section id="profile-container">
 			{username && (
-				<div style={{ display: "flex", justifyContent: "flex-start" }}>
-					<h2
+				<div style={{ display: "flex", justifyContent: "center" }}>
+					{/* <h2
 						style={{
 							border: "1px solid goldenrod",
 							marginRight: "1rem",
@@ -104,19 +105,19 @@ export default function Profile({ token, userId }) {
 						}}
 					>
 						icon
-					</h2>
-					<h2
-						style={{
-							marginRight: "1rem",
-							padding: "1rem",
-						}}
+					</h2> */}
+					<h1
+					// style={{
+					// 	marginRight: "1rem",
+					// 	padding: "1rem",
+					// }}
 					>
-						{username}
-					</h2>
+						welcome, {username}
+					</h1>
 				</div>
 			)}
 			<div>
-				<h4 style={{ textAlign: "left" }}>RECENT ACTIVITY</h4>
+				<h2 style={{ textAlign: "center" }}>RECENT ACTIVITY</h2>
 				{listenedList ? (
 					<div id="profile-gallery">
 						{listenedList
@@ -138,6 +139,15 @@ export default function Profile({ token, userId }) {
 											defaultValue={album.rating}
 											precision={0.5}
 											readOnly
+											emptyIcon={
+												<StarBorderIcon
+													style={{
+														opacity: 0.55,
+														color: "white",
+													}}
+													fontSize="inherit"
+												/>
+											}
 										/>
 									</div>
 								);
@@ -146,7 +156,7 @@ export default function Profile({ token, userId }) {
 				) : (
 					<></>
 				)}
-				<h4 style={{ textAlign: "left" }}>RECENT REVIEWS:</h4>
+				<h2 style={{ textAlign: "center" }}>RECENT REVIEWS</h2>
 				{/* <button onClick={() => handleAlphabetize(listened)}>
 					sort a-z
 				</button> */}

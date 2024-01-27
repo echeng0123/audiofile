@@ -23,6 +23,7 @@ export default function AlbumCard({ userId, albums, token }) {
 	const [existsToListen, setExistsToListen] = useState(false);
 	const [value, setValue] = useState(null);
 	const [created, setCreated] = useState(false);
+	const [createdToListen, setCreatedToListen] = useState(false);
 
 	const nav = useNavigate();
 
@@ -82,6 +83,7 @@ export default function AlbumCard({ userId, albums, token }) {
 						// alert("added album to 'to listen' list");
 					}
 				} else {
+					setCreatedToListen(true);
 					alert(
 						"You have already added this to your To Listen list."
 					);
@@ -198,6 +200,7 @@ export default function AlbumCard({ userId, albums, token }) {
 		setTimeout(function () {
 			x.className = x.className.replace("show", "");
 		}, 3000);
+		setCreatedToListen(true);
 	}
 
 	function listenedSnackbar() {
@@ -206,6 +209,7 @@ export default function AlbumCard({ userId, albums, token }) {
 		setTimeout(function () {
 			x.className = x.className.replace("show", "");
 		}, 3000);
+		setCreated(true);
 	}
 
 	return (
@@ -218,7 +222,11 @@ export default function AlbumCard({ userId, albums, token }) {
 			</div>
 			<div id="album-info-review">
 				<div id="album-info-art">
-					<img src={albums.images[1].url} alt="album art" />
+					<img
+						src={albums.images[1].url}
+						alt="album art"
+						className="album-card-art"
+					/>
 					<div id="album-info">
 						<h2>{albums.name}</h2>
 						<div>
@@ -241,15 +249,48 @@ export default function AlbumCard({ userId, albums, token }) {
 							<button
 								className="album-button"
 								onClick={handleListened}
+								style={
+									created
+										? {
+												borderColor:
+													"rgba(35,149,39,0.5)",
+												backgroundColor:
+													"rgba(35,149,39,0.5)",
+										  }
+										: { color: "white" }
+								}
 							>
-								{created ? "listened" : "listen"}
+								<p
+									style={
+										created
+											? { color: "#DEFFDF" }
+											: { color: "white" }
+									}
+								>
+									{created ? "listened" : "listen"}
+								</p>
 							</button>
 							{/* <button className="album-button">favorite</button> */}
 							<button
 								className="album-button"
 								onClick={handleToListen}
+								style={
+									createdToListen
+										? {
+												borderColor:
+													"rgba(233,187,9,0.6)",
+												backgroundColor:
+													"rgba(233,187,9,0.6)",
+												color: "rgba(255,248,219)",
+										  }
+										: { color: "white" }
+								}
 							>
-								to listen
+								<p>
+									{createdToListen
+										? "on to listen list"
+										: "to listen"}
+								</p>
 							</button>
 						</div>
 						<div id="rating">
@@ -292,7 +333,12 @@ export default function AlbumCard({ userId, albums, token }) {
 									></textarea>
 									<br />
 									<br />
-									<button type="submit">Submit review</button>
+									<button
+										type="submit"
+										className="submit-button"
+									>
+										Submit review
+									</button>
 								</form>
 							)}
 						</div>
