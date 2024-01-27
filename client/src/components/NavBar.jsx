@@ -1,5 +1,5 @@
 import Search from "./Search";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function NavBar({ token, userId }) {
 	return (
@@ -8,31 +8,31 @@ export default function NavBar({ token, userId }) {
 				<h1 id="app-title">audiofile</h1>
 			</Link>
 			<div className="dropdown-content">
-				<Link to="/" className="nav-link">
+				<NavLink to="/" className="nav-link">
 					home
-				</Link>
-				<Link to="/search" className="nav-link">
+				</NavLink>
+				<NavLink to="/search" className="nav-link">
 					search
-				</Link>
+				</NavLink>
 				{token ? (
 					<>
-						<Link to="/to-listen" className="nav-link">
+						<NavLink to="/to-listen" className="nav-link">
 							to listen
-						</Link>
-						<Link to="listened" className="nav-link">
+						</NavLink>
+						<NavLink to="listened" className="nav-link">
 							listened
-						</Link>
-						<Link to="profile" className="nav-link">
+						</NavLink>
+						<NavLink to="profile" className="nav-link">
 							profile
-						</Link>
-						<Link to="/logout" className="nav-link">
+						</NavLink>
+						<NavLink to="/logout" className="nav-link">
 							logout
-						</Link>
+						</NavLink>
 					</>
 				) : (
-					<Link to="/login" className="nav-link">
+					<NavLink to="/login" className="nav-link">
 						login
-					</Link>
+					</NavLink>
 				)}
 			</div>
 		</section>
