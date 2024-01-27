@@ -83,7 +83,7 @@ button:focus-visible {
 
 /* CONTAINERS -------------------------- */
 #app-container {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 90dvw;
     /* height: 90dvh; */
     display: grid;
@@ -92,13 +92,13 @@ button:focus-visible {
 }
 
 #main-section-container{
-    border: 2px dotted goldenrod;
+    /* border: 2px dotted goldenrod; */
     margin: 1rem;
     padding: 1rem;
 }
 
 #home-container{
-    border: 1px solid cyan;
+    /* border: 1px solid cyan; */
     margin: 1rem;
     padding: 2rem;
 }
@@ -107,7 +107,7 @@ button:focus-visible {
     position: absolute;
     top: 0;
     /* right: 25dvw; */
-    border: 1px solid rgb(11, 255, 11);
+    /* border: 1px solid rgb(11, 255, 11); */
     margin: 1rem;
     padding: 1rem;
     display: flex;
@@ -120,13 +120,13 @@ button:focus-visible {
 }
 
 #to-listen-container{
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     margin: 1rem;
     padding: 1rem;
 }
 
 #listened-container{
-    border: 1px solid greenyellow;
+    /* border: 1px solid greenyellow; */
     margin: 1rem;
     padding: 1rem;
 }
@@ -135,7 +135,7 @@ button:focus-visible {
 /* NAVBAR START -------------------------- */
 
 .dropdown-content{
-    border: 1px dashed red;
+    /* border: 1px dashed red; */
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
@@ -164,7 +164,7 @@ button:focus-visible {
 }
 
 #search-bar-container{
-    border: 1px solid greenyellow;
+    /* border: 1px solid greenyellow; */
     padding: 1rem;
     margin: 1rem;
     display: grid;
@@ -175,7 +175,7 @@ button:focus-visible {
 }
 
 .search-result{
-    border: 2px dotted red;
+    /* border: 2px dotted red; */
     display: flex;
 }
 
@@ -189,12 +189,12 @@ button:focus-visible {
 /* ALBUM CARD START ---------------------- */
 #album-card-container{
     display: flex;
-    border: 2px dotted cyan;
+    /* border: 2px dotted cyan; */
 }
 
 #album-info-review{
     display: inline-block;
-    border: 2px dotted orange;
+    /* border: 2px dotted orange; */
 }
 #album-info-art{
     display: flex;
@@ -203,14 +203,14 @@ button:focus-visible {
     display: inline-block;
     text-align: left;
     padding: 0 1rem;
-    border: 2px dotted greenyellow;
+    /* border: 2px dotted greenyellow; */
 }
 #album-review{
     text-align: left;
-    border: 2px dotted purple;
+    /* border: 2px dotted purple; */
 }
 #album-icons{
-    border: 2px dashed pink;
+    /* border: 2px dashed pink; */
     flex-grow: 1;
     display: grid;
 }
@@ -223,19 +223,21 @@ button:focus-visible {
 
 /* TO LISTEN START ----------------------- */
 #to-listen-gallery{
-    border: 2px solid cyan;
+    /* border: 2px solid cyan; */
     padding: 1rem;
     display: flex;
     flex-wrap: wrap;
 }
 
 #album-card-to-listen{
-    border: 2px dotted goldenrod;
+    background: repeat url("./assets/spiration-dark.webp") fixed;
+    /* border: 1px solid white; */
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
     align-items: center;
     margin: 0.3rem 0;
+    padding-right: 1rem;
  }
 
 .album-art{
@@ -266,15 +268,25 @@ button:focus-visible {
 }
 
 .listened-buttons-container{
-    border: 1px dashed white;
+    /* border: 1px dashed white; */
+    font-family: "Lexend", sans-serif;
 }
 
 .review-button{
-    border: 1px dashed white;
+  /* border: 1px dashed white; */
+  border: 1px solid #348544;
+  overflow: hidden;
+  transition: 0.5s all ease;
+}
+
+.review-button:hover{
+    background-color: #348544;
+    border: 1px solid #348544;
+    font-size: 1.1rem;
 }
 
 .delete-button{
-    border: 1px dashed white;
+    /* border: 1px dashed white; */
 }
 
 /* LISTENED END -------------------------- */
