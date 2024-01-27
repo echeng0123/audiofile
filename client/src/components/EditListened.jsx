@@ -8,7 +8,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 export default function EditListened({ listened_id }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [listened, setListened] = useState({});
-	const [value, setValue] = useState(null);
+	const [value, setValue] = useState(0);
 	const [rating, setRating] = useState(null);
 
 	const navigate = useNavigate();
@@ -53,11 +53,13 @@ export default function EditListened({ listened_id }) {
 		}
 	}
 
-	async function handleRating(event, newValue) {
-		event.preventDefault();
-		// console.log("value is currently", newValue);
-		setValue(newValue);
-	}
+	// async function handleRating(event, newValue) {
+	// 	event.preventDefault();
+	// 	// setValue(newValue);
+	// 	// console.log("newValue is currently", newValue);
+	// 	// console.log("value is currently", value);
+	// 	setValue(newValue);
+	// }
 
 	return (
 		<section>
@@ -72,12 +74,12 @@ export default function EditListened({ listened_id }) {
 							<div id="rating">
 								<Stack spacing={1}>
 									<Rating
-										name="half-rating"
+										name="listened-half-rating"
 										defaultValue={0}
 										precision={0.5}
 										value={value}
 										onChange={(event, newValue) => {
-											handleRating(event, newValue);
+											setValue(newValue);
 										}}
 										emptyIcon={
 											<StarBorderIcon
@@ -104,7 +106,7 @@ export default function EditListened({ listened_id }) {
 							></textarea>
 							<br />
 							<br />
-							<button type="submit" className="clear-button">
+							<button type="submit" className="submit-button">
 								Submit
 							</button>
 						</form>

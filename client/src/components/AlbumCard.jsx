@@ -186,6 +186,7 @@ export default function AlbumCard({ userId, albums, token }) {
 
 	async function handleReview(event) {
 		event.preventDefault();
+		reviewSnackbar();
 		setReview(newReview);
 	}
 
@@ -212,6 +213,15 @@ export default function AlbumCard({ userId, albums, token }) {
 		setCreated(true);
 	}
 
+	function reviewSnackbar() {
+		var x = document.getElementById("snackbar3");
+		x.className = "show";
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+		setCreated(true);
+	}
+
 	return (
 		<section id="album-card-container">
 			<div id="snackbar">
@@ -219,6 +229,9 @@ export default function AlbumCard({ userId, albums, token }) {
 			</div>
 			<div id="snackbar2">
 				<h3>Added to Listened list</h3>
+			</div>
+			<div id="snackbar3">
+				<h3>Review Submitted</h3>
 			</div>
 			<div id="album-info-review">
 				<div id="album-info-art">
@@ -296,7 +309,7 @@ export default function AlbumCard({ userId, albums, token }) {
 						<div id="rating">
 							<Stack spacing={1}>
 								<Rating
-									name="half-rating"
+									name="album-card-half-rating"
 									defaultValue={0}
 									precision={0.5}
 									value={value}

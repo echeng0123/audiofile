@@ -420,7 +420,7 @@ button:focus-visible {
 /* PROFILE END --------------------------- */
 
 /* SNACKBAR STYLING START ---------------------------- */
-#snackbar, #snackbar2 {
+#snackbar, #snackbar2, #snackbar3 {
     visibility: hidden;
     min-width: 100px;
     margin-left: -125px;
