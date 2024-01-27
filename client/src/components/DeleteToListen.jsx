@@ -16,8 +16,8 @@ export default function DeleteToListen({ to_listen_id }) {
 
 	return (
 		<div>
-			<button onClick={handleSubmit} className="album-info">
-				Remove from To Listen
+			<button onClick={handleSubmit} className="delete-button">
+				remove from to listen
 			</button>
 		</div>
 	);

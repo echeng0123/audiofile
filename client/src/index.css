@@ -80,6 +80,20 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.generic-button{
+    background-color: rgba(32, 106, 218, 0.484);
+    color: white;
+
+    & a{
+        color: white;
+    }
+}
+
+.generic-button:hover{
+    transition: 0.4s all ease-in-out;
+    background-color: rgba(32, 106, 218, 1);
+    border: rgba(32, 106, 218)
+}
 
 /* CONTAINERS -------------------------- */
 #app-container {
@@ -116,6 +130,13 @@ button:focus-visible {
 
     & a{
         color: rgb(215, 215, 215);
+    }
+    & a:hover{
+        color: goldenrod;
+    }
+    & a:active{
+        color: goldenrod;
+        text-decoration: underline;
     }
 }
 
@@ -277,6 +298,7 @@ button:focus-visible {
   border: 1px solid #348544;
   overflow: hidden;
   transition: 0.5s all ease;
+  margin: 1rem;
 }
 
 .review-button:hover{
@@ -287,6 +309,16 @@ button:focus-visible {
 
 .delete-button{
     /* border: 1px dashed white; */
+  border: 1px solid #e06b59;
+  overflow: hidden;
+  transition: 0.5s all ease;
+  margin: 1rem;
+}
+
+.delete-button:hover{
+    background-color: #e06b59;
+    border: 1px solid #e06b59;
+    font-size: 1.1rem;
 }
 
 /* LISTENED END -------------------------- */

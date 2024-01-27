@@ -16,7 +16,7 @@ export default function DeleteListened({ listened_id }) {
 	return (
 		<div>
 			<button onClick={handleSubmit} className="delete-button">
-				Remove from Listened
+				remove from listened
 			</button>
 		</div>
 	);

@@ -187,12 +187,17 @@ export default function ToListen({ token, userId }) {
 								<h3 className="album-info">
 									{album.album_name}
 								</h3>
-								<button onClick={() => handleListened(album)}>
-									Add to Listened
-								</button>
-								<DeleteToListen
-									to_listen_id={album.to_listen_id}
-								/>
+								<div className="listened-buttons-container">
+									<button
+										onClick={() => handleListened(album)}
+										className="review-button"
+									>
+										Add to Listened
+									</button>
+									<DeleteToListen
+										to_listen_id={album.to_listen_id}
+									/>
+								</div>
 							</div>
 						);
 					})}

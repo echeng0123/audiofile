@@ -100,7 +100,6 @@ export default function Listened({ token, userId }) {
 									<EditListened
 										listened_id={album.listened_id}
 									/>
-									<br />
 									<DeleteListened
 										listened_id={album.listened_id}
 									/>
