@@ -63,35 +63,35 @@ export default function Profile({ token, userId }) {
 	// 	// setListenedList(sortedListened);
 	// }, [listened, sortedListened]);
 
-	function handleAlphabetize(inputArray) {
-		sortedListened.push(
-			inputArray.sort(function (a, b) {
-				if (a.album_name < b.album_name) {
-					return -1;
-				}
-				if (a.album_name > b.album_name) {
-					return 1;
-				}
-				return 0;
-			})
-		);
-		return sortedListened;
-	}
+	// function handleAlphabetize(inputArray) {
+	// 	sortedListened.push(
+	// 		inputArray.sort(function (a, b) {
+	// 			if (a.album_name < b.album_name) {
+	// 				return -1;
+	// 			}
+	// 			if (a.album_name > b.album_name) {
+	// 				return 1;
+	// 			}
+	// 			return 0;
+	// 		})
+	// 	);
+	// 	return sortedListened;
+	// }
 
-	function handleSortByDate(inputArray) {
-		sortedListened.push(
-			inputArray.sort(function (a, b) {
-				if (a.date_listened < b.date_listened) {
-					return -1;
-				}
-				if (a.date_listened > b.date_listened) {
-					return 1;
-				}
-				return 0;
-			})
-		);
-		return sortedListened;
-	}
+	// function handleSortByDate(inputArray) {
+	// 	sortedListened.push(
+	// 		inputArray.sort(function (a, b) {
+	// 			if (a.date_listened < b.date_listened) {
+	// 				return -1;
+	// 			}
+	// 			if (a.date_listened > b.date_listened) {
+	// 				return 1;
+	// 			}
+	// 			return 0;
+	// 		})
+	// 	);
+	// 	return sortedListened;
+	// }
 
 	return (
 		<section id="profile-container">
@@ -180,7 +180,18 @@ export default function Profile({ token, userId }) {
 										<div className="listened-album-info">
 											<h2>
 												<b>{album.album_name} </b>
-												{album.release_date.slice(0, 4)}
+												<span
+													style={{
+														fontFamily:
+															"Karla, sans-serif",
+														fontWeight: "300",
+													}}
+												>
+													{album.release_date.slice(
+														0,
+														4
+													)}
+												</span>
 												<br />
 											</h2>
 											<p>

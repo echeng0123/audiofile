@@ -298,6 +298,7 @@ button:focus-visible {
     padding: 1rem;
     display: flex;
     flex-wrap: wrap;
+    box-shadow: 2px 2px 20px 5px black;
 }
 
 #album-card-to-listen{
@@ -398,6 +399,7 @@ button:focus-visible {
     place-content: space-evenly;
     place-items: center;
     margin: 1rem;
+    box-shadow: 2px 2px 20px 5px black;
 }
 
 .profile-album-art{
@@ -546,6 +548,10 @@ button:focus-visible {
     #login-text{
         justify-content: space-between;
         align-items: center;
+    }
+
+    #username, #password{
+        font-family: "Lexend", sans-serif;
     }
 
     #register-form{
