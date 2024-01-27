@@ -9,6 +9,7 @@ import EditListened from "./EditListened";
 import { Stack, Rating } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 export default function AlbumCard({ userId, albums, token }) {
 	// console.log("we are in albumcard");
@@ -226,7 +227,12 @@ export default function AlbumCard({ userId, albums, token }) {
 								<b>{albums.release_date.slice(0, 4)}</b>
 							</p>
 							<p>
-								By <b>{albums.artists[0].name}</b>
+								By{" "}
+								<b>
+									{albums.artists.map(
+										(artist) => `${artist.name} `
+									)}
+								</b>
 							</p>
 						</div>
 					</div>
@@ -256,6 +262,15 @@ export default function AlbumCard({ userId, albums, token }) {
 									onChange={(event, newValue) => {
 										handleRating(event, newValue);
 									}}
+									emptyIcon={
+										<StarBorderIcon
+											style={{
+												opacity: 0.55,
+												color: "white",
+											}}
+											fontSize="inherit"
+										/>
+									}
 								/>
 							</Stack>
 						</div>

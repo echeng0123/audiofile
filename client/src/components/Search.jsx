@@ -96,7 +96,7 @@ export default function Search({ userId, token }) {
 	// routes to single album page when search result is clicked
 	async function handleClick(n) {
 		event.preventDefault();
-		console.log("n is ", n);
+		// console.log("n is ", n);
 		setNum(n);
 	}
 
@@ -108,7 +108,7 @@ export default function Search({ userId, token }) {
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="Search"></label>
 					<input
-						id="musicChoice"
+						id="search-form"
 						type="text"
 						name="search"
 						placeholder="Enter any album from Spotify"
@@ -125,12 +125,16 @@ export default function Search({ userId, token }) {
 				// show first 5 results from spotify API
 				<div id="search-dropdown">
 					{albumMessage && (
-						<h5 id="album-message">
+						<h6 id="album-message">
 							These are the closest album matches to your query.
-						</h5>
+							Click to view album panel.
+						</h6>
 					)}
 					{albums && (
-						<button onClick={() => handleClick(0)}>
+						<button
+							onClick={() => handleClick(0)}
+							className="search-result-button"
+						>
 							<div className="search-result">
 								<img
 									src={albums[0].images[2].url}
@@ -139,13 +143,21 @@ export default function Search({ userId, token }) {
 								/>
 								<div className="search-result-details">
 									<p>{albums[0].name}</p>
-									<p>Album by {albums[0].artists[0].name}</p>
+									<p>
+										Album by{" "}
+										{albums[0].artists.map(
+											(artist) => artist.name
+										)}
+									</p>
 								</div>
 							</div>
 						</button>
 					)}
 					{albums[1] && (
-						<button onClick={() => handleClick(1)}>
+						<button
+							onClick={() => handleClick(1)}
+							className="search-result-button"
+						>
 							<div className="search-result">
 								<img
 									src={albums[1].images[2].url}
@@ -154,13 +166,35 @@ export default function Search({ userId, token }) {
 								/>
 								<div className="search-result-details">
 									<p>{albums[1].name}</p>
-									<p>Album by {albums[1].artists[0].name}</p>
+									<p>
+										Album by{" "}
+										{albums[1].artists.map(
+											(artist) => `${artist.name} `
+										)}
+										{/* {albums[1].artists.map((artist) => {
+											// `${artist.name}, `;
+											let finalIndex =
+												albums[1].artists.length - 1;
+											if (
+												artist.name !==
+												albums[1].artists[finalIndex]
+													.name
+											) {
+												`${artist.name}, `;
+											} else {
+												`${artist.name}`;
+											}
+										})} */}
+									</p>
 								</div>
 							</div>
 						</button>
 					)}
 					{albums[2] && (
-						<button onClick={() => handleClick(2)}>
+						<button
+							onClick={() => handleClick(2)}
+							className="search-result-button"
+						>
 							<div className="search-result">
 								<img
 									src={albums[2].images[2].url}
@@ -169,13 +203,21 @@ export default function Search({ userId, token }) {
 								/>
 								<div className="search-result-details">
 									<p>{albums[2].name}</p>
-									<p>Album by {albums[2].artists[0].name}</p>
+									<p>
+										Album by{" "}
+										{albums[2].artists.map(
+											(artist) => `${artist.name} `
+										)}
+									</p>
 								</div>
 							</div>
 						</button>
 					)}
 					{albums[3] && (
-						<button onClick={() => handleClick(3)}>
+						<button
+							onClick={() => handleClick(3)}
+							className="search-result-button"
+						>
 							<div className="search-result">
 								<img
 									src={albums[3].images[2].url}
@@ -184,13 +226,21 @@ export default function Search({ userId, token }) {
 								/>
 								<div className="search-result-details">
 									<p>{albums[3].name}</p>
-									<p>Album by {albums[3].artists[0].name}</p>
+									<p>
+										Album by{" "}
+										{albums[3].artists.map(
+											(artist) => `${artist.name} `
+										)}
+									</p>
 								</div>
 							</div>
 						</button>
 					)}
 					{albums[4] && (
-						<button onClick={() => handleClick(4)}>
+						<button
+							onClick={() => handleClick(4)}
+							className="search-result-button"
+						>
 							<div className="search-result">
 								<img
 									src={albums[4].images[2].url}
@@ -199,7 +249,12 @@ export default function Search({ userId, token }) {
 								/>
 								<div className="search-result-details">
 									<p>{albums[4].name}</p>
-									<p>Album by {albums[4].artists[0].name}</p>
+									<p>
+										Album by{" "}
+										{albums[4].artists.map(
+											(artist) => `${artist.name} `
+										)}
+									</p>
 								</div>
 							</div>
 						</button>

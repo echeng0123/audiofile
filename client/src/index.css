@@ -193,10 +193,29 @@ button:focus-visible {
     padding: 1rem;
     margin: 1rem;
     display: grid;
+    font-size: 2rem;
+}
+
+#search-form{
+    color: rgb(255, 255, 255);
+    font-family: "Lexend", sans-serif;
+    width: 20dvw;
+    text-align: center;
+    border-radius: 2px;
 }
 
 #search-dropdown{
     display: grid;
+}
+
+.search-result-button{
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    background-color: #1a1a1a95;
+}
+
+.search-result-button:hover{
+    border: 1px solid goldenrod;
 }
 
 .search-result{
@@ -204,9 +223,15 @@ button:focus-visible {
     display: flex;
 }
 
+.search-icon{
+    width: 100px;
+    height: auto;
+}
+
 .search-result-details{
     display: inline-block;
     text-align: left;
+    margin-left: 1rem;
 }
 
 /* SEARCH BAR END ------------------------ */
@@ -215,6 +240,10 @@ button:focus-visible {
 #album-card-container{
     display: flex;
     /* border: 2px dotted cyan; */
+    border: 1px solid goldenrod;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
 }
 
 #album-info-review{
@@ -235,8 +264,7 @@ button:focus-visible {
     /* border: 2px dotted purple; */
 }
 #album-icons{
-    /* border: 2px dashed pink; */
-    flex-grow: 1;
+    border: 2px dashed pink;
     display: grid;
 }
 
