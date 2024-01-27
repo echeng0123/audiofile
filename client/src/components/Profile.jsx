@@ -192,6 +192,15 @@ export default function Profile({ token, userId }) {
 												defaultValue={album.rating}
 												precision={0.5}
 												readOnly
+												emptyIcon={
+													<StarBorderIcon
+														style={{
+															opacity: 0.55,
+															color: "white",
+														}}
+														fontSize="inherit"
+													/>
+												}
 											/>
 											<p>{album.review}</p>
 										</div>

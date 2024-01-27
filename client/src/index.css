@@ -26,7 +26,7 @@
 
 a { 
   font-weight: 500;
-  color: white;
+  color: goldenrod;
   text-decoration: inherit;
   font-family: "Lexend", sans-serif;
 }
@@ -49,6 +49,7 @@ body {
 #footer-container{
     display: grid;
     place-content: center;
+    place-items: center;
 }
 
 h1 {
@@ -87,6 +88,7 @@ button:focus-visible {
 .generic-button{
     background-color: rgba(32, 106, 218, 0.484);
     color: white;
+    width: 15dvw;
 
     & a{
         color: white;
@@ -175,6 +177,7 @@ button:focus-visible {
 #app-title:hover{
     transition: 0.3s all ease-in-out;
     color: goldenrod;
+    text-decoration: none;
 }
 
 .nav-link{

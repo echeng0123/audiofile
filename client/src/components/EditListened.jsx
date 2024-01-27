@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchListenedById, editListened } from "../../fetching/local";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 export default function EditListened({ listened_id }) {
 	const [isOpen, setIsOpen] = useState(false);
@@ -78,6 +79,15 @@ export default function EditListened({ listened_id }) {
 										onChange={(event, newValue) => {
 											handleRating(event, newValue);
 										}}
+										emptyIcon={
+											<StarBorderIcon
+												style={{
+													opacity: 0.55,
+													color: "white",
+												}}
+												fontSize="inherit"
+											/>
+										}
 									/>
 								</Stack>
 							</div>

@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 export default function NavBar({ token, userId }) {
 	return (
 		<section id="navbar-container">
-			<Link to="/" className="nav-link">
+			<Link to="/">
 				<h1 id="app-title">audiofile</h1>
 			</Link>
 			<div className="dropdown-content">
