@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 
-export default function AlbumCard({ userId, albums, token }) {
+export default function AlbumCard({ userId, albums, token, num }) {
 	// console.log("we are in albumcard");
 	// console.log("albums in albumcard", albums);
 	const [isOpen, setIsOpen] = useState(false);
@@ -24,8 +24,21 @@ export default function AlbumCard({ userId, albums, token }) {
 	const [value, setValue] = useState(null);
 	const [created, setCreated] = useState(false);
 	const [createdToListen, setCreatedToListen] = useState(false);
+	const [albumNum, setAlbumNum] = useState(null);
 
 	const nav = useNavigate();
+
+	// load in album num
+	useEffect(() => {
+		setAlbumNum(num);
+	}, [num]);
+
+	// check what album num is on
+	useEffect(() => {
+		// clear out listened and to listen for new albums
+		setCreated(false);
+		setCreatedToListen(false);
+	}, [albumNum]);
 
 	// TO LISTEN SECTION
 	useEffect(() => {
@@ -185,9 +198,9 @@ export default function AlbumCard({ userId, albums, token }) {
 	}
 
 	async function handleReview(event) {
-		event.preventDefault();
 		reviewSnackbar();
 		setReview(newReview);
+		nav("/search");
 	}
 
 	async function handleRating(event, newValue) {

@@ -262,7 +262,12 @@ export default function Search({ userId, token }) {
 				</div>
 			)}
 			{num != null && (
-				<AlbumCard userId={userId} albums={albums[num]} token={token} />
+				<AlbumCard
+					userId={userId}
+					albums={albums[num]}
+					token={token}
+					num={num}
+				/>
 			)}
 		</section>
 	);
