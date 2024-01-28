@@ -38,6 +38,7 @@ export default function AlbumCard({ userId, albums, token, num }) {
 		// clear out listened and to listen for new albums
 		setCreated(false);
 		setCreatedToListen(false);
+		setValue(null);
 	}, [albumNum]);
 
 	// TO LISTEN SECTION
