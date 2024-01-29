@@ -1,4 +1,4 @@
-const base_url = "http://audio-file.onrender.com/api";
+const base_url = "http://audiofile.onrender.com/api";
 
 // USER ROUTES =================================== //
 
