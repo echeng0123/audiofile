@@ -7,15 +7,20 @@ export default function Home({ token, setToken, setUserId, userId }) {
 	const [username, setUsername] = useState("");
 	const [userIdNo, setUserIdNo] = useState(null);
 
+	// get userId on homepage
+	useEffect(() => {
+		setUserIdNo(userId);
+	}, [userId]);
+
 	useEffect(() => {
 		async function getUserInfoByUserId() {
-			const response = await fetchUserByUserId(userId);
+			const response = await fetchUserByUserId(userIdNo);
 			console.log("response from user id", response);
 			setUsername(response.username);
 			setUserIdNo(response.users_id);
 		}
 		getUserInfoByUserId();
-	}, []);
+	}, [userIdNo]);
 
 	// converts string to title case/sentence case for later display in rendering
 	function titleCase(str) {

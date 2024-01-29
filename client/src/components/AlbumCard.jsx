@@ -33,7 +33,7 @@ export default function AlbumCard({ userId, albums, token, num }) {
 		setAlbumNum(num);
 	}, [num]);
 
-	// check what album num is on
+	// clear out settings when a new album card is clicked
 	useEffect(() => {
 		// clear out listened and to listen for new albums
 		setCreated(false);
