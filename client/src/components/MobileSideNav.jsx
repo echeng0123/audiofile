@@ -41,13 +41,13 @@ export default function MobileSideNav({ token }) {
 				<div className="bar3"></div>
 			</div>
 			<div id="mySidenav" className="sidenav">
-				<Link href="/">home</Link>
-				<Link href="/search">search</Link>
-				{token && <Link href="/to-listen">to listen</Link>}
-				{token && <Link href="/listened">listened</Link>}
-				{token && <Link href="/profile">profile</Link>}
-				{!token && <Link href="/login">login</Link>}
-				{token && <Link href="/logout">logout</Link>}
+				<Link to="/">home</Link>
+				<Link to="/search">search</Link>
+				{token && <Link to="/to-listen">to listen</Link>}
+				{token && <Link to="/listened">listened</Link>}
+				{token && <Link to="/profile">profile</Link>}
+				{!token && <Link to="/login">login</Link>}
+				{token && <Link to="/logout">logout</Link>}
 			</div>
 		</div>
 	);
