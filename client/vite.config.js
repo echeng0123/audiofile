@@ -9,6 +9,7 @@ export default defineConfig({
 			external: [
 				"@mui/material/Rating",
 				"@mui/icons-material/StarBorder",
+				"@mui/material",
 			],
 			outDir: "build",
 		},
