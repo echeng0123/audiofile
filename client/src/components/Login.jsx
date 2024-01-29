@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../../fetching/local";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Login({ token, setToken, setUserId }) {
 	const [username, setUsername] = useState("");
@@ -77,7 +78,7 @@ export default function Login({ token, setToken, setUserId }) {
 					Submit
 				</button>
 			</form>
-			<a href="/register">Create new account</a>
+			<Link to="/register">Create new account</Link>
 		</section>
 	);
 }
