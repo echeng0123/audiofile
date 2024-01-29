@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function MobileSideNav({ token }) {
 	const buttonX = document.getElementById("buttonX");
@@ -40,13 +41,13 @@ export default function MobileSideNav({ token }) {
 				<div className="bar3"></div>
 			</div>
 			<div id="mySidenav" className="sidenav">
-				<a href="/">home</a>
-				<a href="/search">search</a>
-				{token && <a href="/to-listen">to listen</a>}
-				{token && <a href="/listened">listened</a>}
-				{token && <a href="/profile">profile</a>}
-				{!token && <a href="/login">login</a>}
-				{token && <a href="/logout">logout</a>}
+				<Link href="/">home</Link>
+				<Link href="/search">search</Link>
+				{token && <Link href="/to-listen">to listen</Link>}
+				{token && <Link href="/listened">listened</Link>}
+				{token && <Link href="/profile">profile</Link>}
+				{!token && <Link href="/login">login</Link>}
+				{token && <Link href="/logout">logout</Link>}
 			</div>
 		</div>
 	);
