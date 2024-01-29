@@ -10,7 +10,7 @@ export default defineConfig({
 				"@mui/material/Rating",
 				"@mui/icons-material/StarBorder",
 				"@mui/material",
-				"@mui/Stack",
+				"@mui/material/Stack",
 			],
 			outDir: "build",
 		},
