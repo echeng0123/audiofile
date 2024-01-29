@@ -6,12 +6,12 @@ export default defineConfig({
 	plugins: [react()],
 	build: {
 		rollupOptions: {
-			external: [
-				"@mui/material/Rating",
-				"@mui/icons-material/StarBorder",
-				"@mui/material",
-				"@mui/material/Stack",
-			],
+			// external: [
+			// 	"@mui/material/Rating",
+			// 	"@mui/icons-material/StarBorder",
+			// 	"@mui/material",
+			// 	"@mui/material/Stack",
+			// ],
 			outDir: "build",
 		},
 	},
