@@ -15,7 +15,7 @@ export default function Profile({ token, userId }) {
 	useEffect(() => {
 		async function getUserInfoByUserId() {
 			const response = await fetchUserByUserId(userId);
-			console.log("response from user id", response);
+			// console.log("response from user id", response);
 			setUsername(response.username);
 			setUserIdNo(response.users_id);
 		}
@@ -33,9 +33,9 @@ export default function Profile({ token, userId }) {
 
 	useEffect(() => {
 		async function getListenedByUserId() {
-			console.log("userId in getListenedByUserId", userId);
+			// console.log("userId in getListenedByUserId", userId);
 			const ListenedResponse = await fetchListenedByUserId(userId);
-			console.log("listened response", ListenedResponse);
+			// console.log("listened response", ListenedResponse);
 			try {
 				if (ListenedResponse) {
 					setListened(ListenedResponse);
@@ -49,7 +49,7 @@ export default function Profile({ token, userId }) {
 	}, [userId, userIdNo]);
 
 	useEffect(() => {
-		console.log("listened in UE", listened);
+		// console.log("listened in UE", listened);
 		setListenedList(listened);
 	}, [listened]);
 

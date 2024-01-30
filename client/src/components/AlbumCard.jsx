@@ -183,7 +183,7 @@ export default function AlbumCard({ userId, albums, token, num }) {
 
 		if (token) {
 			try {
-				checkUniqueListened();
+				await checkUniqueListened();
 				if (!exists) {
 					const newListenedCreated = await createNewListened(
 						listenedObj
@@ -222,7 +222,7 @@ export default function AlbumCard({ userId, albums, token, num }) {
 
 		// console.log("iscreated", isCreated);
 		if (isCreated) {
-			// console.log("entering is created");
+			console.log("entering is created");
 			// console.log("listenedObj", listenedObj);
 			try {
 				await editListened(listenedObj, listenedReview[0].listened_id);
@@ -233,7 +233,7 @@ export default function AlbumCard({ userId, albums, token, num }) {
 			reviewSnackbar();
 			// nav("/search");
 		} else {
-			// console.log("entering ELSE is not created");
+			console.log("entering ELSE is not created");
 
 			try {
 				const newListened = await createNewListened(listenedObj);
