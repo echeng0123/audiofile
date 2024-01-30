@@ -8,7 +8,7 @@ export default function DeleteListened({ listened_id }) {
 		event.preventDefault();
 		try {
 			listened_id && (await deleteListened(listened_id));
-			nav("/listened");
+			nav(0);
 		} catch (error) {
 			console.error(error);
 		}
