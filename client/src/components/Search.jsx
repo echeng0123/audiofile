@@ -35,7 +35,7 @@ export default function Search({ userId, token }) {
 
 		if (albumInput) {
 			setResults(!results);
-			console.log("album is", albumInput);
+			// console.log("album is", albumInput);
 		} else {
 			console.log("can't get results");
 		}
@@ -73,10 +73,10 @@ export default function Search({ userId, token }) {
 						}
 					}
 					setAlbums(albumsTemp.slice(0, 5));
-					console.log(
-						"albums from search are ",
-						albumsTemp.slice(0, 5)
-					);
+					// console.log(
+					// 	"albums from search are ",
+					// 	albumsTemp.slice(0, 5)
+					// );
 				} else {
 					console.log("can't get album response");
 				}
@@ -121,6 +121,14 @@ export default function Search({ userId, token }) {
 					/>
 				</form>
 			</div>
+			{num != null && (
+				<AlbumCard
+					userId={userId}
+					albums={albums[num]}
+					token={token}
+					num={num}
+				/>
+			)}
 			{results && (
 				// show first 5 results from spotify API
 				<div id="search-dropdown">
@@ -260,14 +268,6 @@ export default function Search({ userId, token }) {
 						</button>
 					)}
 				</div>
-			)}
-			{num != null && (
-				<AlbumCard
-					userId={userId}
-					albums={albums[num]}
-					token={token}
-					num={num}
-				/>
 			)}
 		</section>
 	);

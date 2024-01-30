@@ -1,4 +1,5 @@
 const base_url = "https://audio-file.onrender.com/api";
+// const base_url = "http://localhost:8080/api";
 
 // USER ROUTES =================================== //
 
@@ -192,34 +193,37 @@ export const fetchListenedByUserId = async (user_id) => {
 };
 
 export const createNewListened = async (
-	users_id,
-	artist,
-	album_name,
-	image_url,
-	release_date,
-	review,
-	rating,
-	date_listened
+	// users_id,
+	// artist,
+	// album_name,
+	// image_url,
+	// release_date,
+	// review,
+	// rating,
+	// date_listened
+	listenedObj
 ) => {
 	try {
-		console.log("...starting to create new listened item");
+		// console.log("...starting to create new listened item");
 		const response = await fetch(`${base_url}/listened`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({
-				users_id: users_id,
-				artist: artist,
-				album_name: album_name,
-				image_url: image_url,
-				release_date: release_date,
-				review: review,
-				rating: rating,
-				date_listened: date_listened,
-			}),
+			// body: JSON.stringify({
+			// 	users_id: users_id,
+			// 	artist: artist,
+			// 	album_name: album_name,
+			// 	image_url: image_url,
+			// 	release_date: release_date,
+			// 	review: review,
+			// 	rating: rating,
+			// 	date_listened: date_listened,
+			// }),
+			body: JSON.stringify(listenedObj),
 		});
 		const result = await response.json();
+		console.log("successfully created new listened item");
 		// console.log("result from createNewListened", result);
 		return result;
 	} catch (error) {
@@ -242,6 +246,7 @@ export const deleteListened = async (listened_id) => {
 };
 
 export const editListened = async (listenedData, listenedId) => {
+	console.log("edit info: ", listenedData, listenedId);
 	try {
 		console.log("entering edit listened in local");
 		const response = await fetch(`${base_url}/listened/${listenedId}`, {
@@ -255,8 +260,9 @@ export const editListened = async (listenedData, listenedId) => {
 		console.log("Successfully edited listened");
 		return result;
 	} catch (error) {
-		alert(
-			"We're sorry, there has been an error during edit. Please try again later."
+		console.error(
+			"We're sorry, there has been an error during edit. Please try again later.",
+			error
 		);
 	}
 };

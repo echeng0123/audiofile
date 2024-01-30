@@ -26,7 +26,7 @@ fetchToken();
 export const fetchAlbumSearch = async (albumInput, spotifyToken) => {
 	// console.log("spotifyToken in fetch album search", spotifyToken);
 	try {
-		console.log("...starting to fetch album");
+		// console.log("...starting to fetch album");
 		const response = await fetch(`${base_url}${albumInput}&type=album`, {
 			method: "GET",
 			headers: {

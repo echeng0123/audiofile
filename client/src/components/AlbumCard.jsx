@@ -4,6 +4,7 @@ import {
 	fetchToListenByUserId,
 	fetchListenedById,
 	fetchListenedByUserId,
+	editListened,
 } from "../../fetching/local";
 import EditListened from "./EditListened";
 import { Stack, Rating } from "@mui/material";
@@ -12,11 +13,9 @@ import { useNavigate } from "react-router-dom";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 
 export default function AlbumCard({ userId, albums, token, num }) {
-	// console.log("we are in albumcard");
-	// console.log("albums in albumcard", albums);
 	const [isOpen, setIsOpen] = useState(false);
 	const [newReview, setNewReview] = useState("");
-	const [review, setReview] = useState("");
+	// const [review, setReview] = useState("");
 	const [userListened, setUserListened] = useState({});
 	const [userToListen, setUserToListen] = useState({});
 	const [exists, setExists] = useState(false);
@@ -25,8 +24,23 @@ export default function AlbumCard({ userId, albums, token, num }) {
 	const [created, setCreated] = useState(false);
 	const [createdToListen, setCreatedToListen] = useState(false);
 	const [albumNum, setAlbumNum] = useState(null);
+	const [listenedObj, setListenedObj] = useState({});
+	// const [listenedId, setListenedId] = useState(null);
 
 	const nav = useNavigate();
+
+	useEffect(() => {
+		setListenedObj({
+			users_id: userId,
+			artist: albums.artists[0].name,
+			album_name: albums.name,
+			image_url: albums.images[1].url,
+			release_date: albums.release_date,
+			rating: value,
+			date_listened: getDate(),
+			review: newReview,
+		});
+	}, [albums, value, newReview, userId]);
 
 	// load in album num
 	useEffect(() => {
@@ -55,14 +69,39 @@ export default function AlbumCard({ userId, albums, token, num }) {
 		getToListenByUserId();
 	}, [userId]);
 
-	// useEffect(() => {
-	// 	console.log("usertolisten", userToListen);
-	// 	if (userToListen) {
-	// 		checkUniqueToListen();
-	// 	}
-	// }, []);
+	// LISTENED SECTION
+	useEffect(() => {
+		async function getListenedByUserId() {
+			try {
+				const response = await fetchListenedByUserId(userId);
+				// console.log("response from FLBUI", response);
+				setUserListened(response);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+		getListenedByUserId();
+	}, [userId]);
 
-	function checkUniqueToListen() {
+	// Check if to listen and listened exists
+	useEffect(() => {
+		// console.log("usertolisten", userToListen);
+		// console.log("albums are", albums);
+		async function checkingUniques() {
+			if (userToListen.length > 0) {
+				await checkUniqueToListen();
+			}
+			if (userListened.length > 0) {
+				await checkUniqueListened();
+				// console.log("listenedId in checking", listenedId);
+			}
+		}
+		checkingUniques();
+	}, [userToListen, userListened]);
+
+	async function checkUniqueToListen() {
+		// console.log("userToListen", userToListen);
+
 		const foundToListen = userToListen.find(
 			(album) =>
 				album.album_name == albums.name &&
@@ -122,27 +161,18 @@ export default function AlbumCard({ userId, albums, token, num }) {
 		return today;
 	}
 
-	// LISTENED SECTION
-	useEffect(() => {
-		async function getListenedByUserId() {
-			try {
-				const response = await fetchListenedByUserId(userId);
-				// console.log("response from FLBUI", response);
-				setUserListened(response);
-			} catch (error) {
-				console.error(error);
-			}
-		}
-		getListenedByUserId();
-	}, [userId]);
+	async function checkUniqueListened() {
+		// console.log("userListened in checkuniquelistened", userListened);
 
-	function checkUniqueListened() {
-		const found = userListened.find(
+		const responseListened = await fetchListenedByUserId(userId);
+
+		const found = responseListened.find(
 			(album) =>
 				album.album_name == albums.name &&
 				album.artist == albums.artists[0].name
 		);
 		// console.log("found", found);
+		// console.log("responseListened", responseListened);
 		setExists(found);
 		return found;
 	}
@@ -150,33 +180,20 @@ export default function AlbumCard({ userId, albums, token, num }) {
 	// button for clicking "add to listened"
 	async function handleListened(event) {
 		event.preventDefault();
-		let users_id = userId;
-		let artist = albums.artists[0].name;
-		let album_name = albums.name;
-		let image_url = albums.images[1].url;
-		let release_date = albums.release_date;
-		let rating = value;
-		let date_listened = getDate();
 
 		if (token) {
 			try {
 				checkUniqueListened();
 				if (!exists) {
 					const newListenedCreated = await createNewListened(
-						users_id,
-						artist,
-						album_name,
-						image_url,
-						release_date,
-						review,
-						rating,
-						date_listened
+						listenedObj
 					);
 					if (newListenedCreated) {
 						setCreated(true);
 						listenedSnackbar();
 						// alert("added to listened list");
 					}
+					return newListenedCreated;
 				} else {
 					alert("This album is already on your Listened list.");
 				}
@@ -199,9 +216,36 @@ export default function AlbumCard({ userId, albums, token, num }) {
 	}
 
 	async function handleReview(event) {
-		reviewSnackbar();
-		setReview(newReview);
-		nav("/search");
+		event.preventDefault();
+		const isCreated = await checkUniqueListened();
+		const listenedReview = await fetchListenedByUserId(userId);
+
+		// console.log("iscreated", isCreated);
+		if (isCreated) {
+			// console.log("entering is created");
+			// console.log("listenedObj", listenedObj);
+			try {
+				await editListened(listenedObj, listenedReview[0].listened_id);
+				// console.log("SUCCESS: edited listened", editResponse);
+			} catch (err) {
+				console.error("can't edit listened", err);
+			}
+			reviewSnackbar();
+			// nav("/search");
+		} else {
+			// console.log("entering ELSE is not created");
+
+			try {
+				const newListened = await createNewListened(listenedObj);
+				// console.log("success creating new listened", newListened);
+			} catch (error) {
+				console.log("trouble creating that item", error);
+			}
+			// nav("/search");
+			reviewSnackbar();
+
+			// alert("Trouble adding that item");
+		}
 	}
 
 	async function handleRating(event, newValue) {
@@ -350,7 +394,7 @@ export default function AlbumCard({ userId, albums, token, num }) {
 								{isOpen ? "Close review panel" : "Add review"}
 							</button>
 							{isOpen && (
-								<form onSubmit={handleReview}>
+								<form onSubmit={(event) => handleReview(event)}>
 									<textarea
 										autoFocus
 										// value={}
