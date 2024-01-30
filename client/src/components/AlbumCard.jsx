@@ -171,8 +171,8 @@ export default function AlbumCard({ userId, albums, token, num }) {
 				album.album_name == albums.name &&
 				album.artist == albums.artists[0].name
 		);
-		// console.log("found", found);
-		// console.log("responseListened", responseListened);
+		console.log("found", found);
+		console.log("responseListened", responseListened);
 		setExists(found);
 		return found;
 	}
@@ -185,6 +185,7 @@ export default function AlbumCard({ userId, albums, token, num }) {
 			try {
 				await checkUniqueListened();
 				if (!exists) {
+					console.log("does not exist listened");
 					const newListenedCreated = await createNewListened(
 						listenedObj
 					);
@@ -193,6 +194,7 @@ export default function AlbumCard({ userId, albums, token, num }) {
 						listenedSnackbar();
 						// alert("added to listened list");
 					}
+					console.log("newListenedCreated", newListenedCreated);
 					return newListenedCreated;
 				} else {
 					alert("This album is already on your Listened list.");
@@ -219,6 +221,7 @@ export default function AlbumCard({ userId, albums, token, num }) {
 		event.preventDefault();
 		const isCreated = await checkUniqueListened();
 		const listenedReview = await fetchListenedByUserId(userId);
+		console.log("listenedReview", listenedReview);
 
 		// console.log("iscreated", isCreated);
 		if (isCreated) {
